@@ -1,0 +1,19 @@
+﻿# Dependencias
+node_modules/
+vendor/
+
+# Archivos de entorno y logs
+.env
+*.log
+npm-debug.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

@@ -1,0 +1,23 @@
+{
+  "name": "johns-grobe",
+  "version": "1.0.0",
+  "description": "John's Grobe — Hamburgueses de Girona, Frankfurts & Tapes a Marina Port Premià (Salsitxers & Graella des de 2006)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "restaurant",
+    "burger",
+    "frankfurt",
+    "marina-port-premia",
+    "gourmet"
+  ],
+  "author": "John's Grobe",
+  "license": "ISC",
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  }
+}

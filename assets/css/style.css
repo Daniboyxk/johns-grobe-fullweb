@@ -1,0 +1,7034 @@
+/* ==========================================================================
+   JOHN'S GROBE — Salsitxers & Graella des de 2006 | Marina Port Premià
+   Sistema de Disseny Oficial: Brand Book & johnsgrobe.com
+   Paleta: Crimson Red (#DD183B), Snow White (#FFF9F6), Obsidian Black (#0F172A)
+   Tipografia: Nunito Sans & Lora
+   ========================================================================== */
+
+/* --- Variables de Disseny Oficials (Brand Book) --- */
+:root {
+  /* Colors Primaris Brand Book */
+  --crimson-red: #DD183B;
+  --crimson-hover: #C01231;
+  --crimson-dark: #9E0B25;
+  --crimson-tint: rgba(221, 24, 59, 0.08);
+  --crimson-glow: 0 10px 30px rgba(221, 24, 59, 0.18);
+
+  /* Superfícies & Fons */
+  --snow-white: #FFF9F6;
+  --pure-white: #FFFFFF;
+  --surface-cream: #FAF3EE;
+  --surface-tint: #FDEEE9;
+  --surface-muted: #F5EAE4;
+
+  /* Textos & Contrast (Optimitzat WCAG AAA per a màxima llegibilitat) */
+  --obsidian-black: #0F172A;
+  --charcoal-dark: #1E293B;
+  --text-muted: #475569;
+  --text-soft: #1E293B;
+  --on-crimson: #FFFFFF;
+
+  /* Delineats i Vores */
+  --border-crimson: rgba(221, 24, 59, 0.22);
+  --border-warm: #EEDCD5;
+  --border-subtle: #F2E4DE;
+  --border-card: #EAD5CD;
+
+  /* Tipografies */
+  --font-primary: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Lora', Georgia, serif;
+
+  /* Espaiat & Radi */
+  --gutter: 24px;
+  --section-gap: 90px;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-pill: 9999px;
+
+  /* Ombres */
+  --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.04);
+  --shadow-elevated: 0 16px 36px rgba(15, 23, 42, 0.08);
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Reseteig Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--snow-white);
+  color: var(--obsidian-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+/* --- Suport per a Lenis Smooth Scroll --- */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--snow-white);
+  color: var(--obsidian-black);
+  line-height: 1.6;
+  overflow-x: clip;
+  margin: 0;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* --- Barra d'Avisos Superior (Marquee) --- */
+.top-announcement-bar {
+  background: var(--crimson-red);
+  color: var(--pure-white);
+  font-family: var(--font-primary);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.55rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  z-index: 60;
+  box-shadow: 0 2px 10px rgba(221, 24, 59, 0.2);
+}
+
+.announcement-track {
+  display: inline-flex;
+  gap: 2.5rem;
+  animation: marquee 32s linear infinite;
+}
+
+.announcement-track .dot {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- Barra de Navegació Principal --- */
+.main-navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  background: rgba(255, 249, 246, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-warm);
+  transition: all var(--transition-smooth);
+}
+
+.main-navbar.scrolled {
+  background: rgba(255, 249, 246, 0.98);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+
+.nav-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  height: 84px;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+}
+
+.brand-logo-img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.brand-logo:hover .brand-logo-img {
+  transform: scale(1.05);
+}
+
+.brand-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-primary);
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: var(--obsidian-black);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.brand-sub {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--crimson-red);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Menú Desktop */
+.desktop-nav {
+  display: none;
+  height: 100%;
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    height: 100%;
+  }
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  height: 100%;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-family: var(--font-primary);
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast);
+  padding: 0 0.2rem;
+}
+
+.nav-link:hover {
+  color: var(--crimson-red);
+  border-bottom-color: var(--border-crimson);
+}
+
+.nav-link.active {
+  color: var(--crimson-red);
+  border-bottom-color: var(--crimson-red);
+}
+
+/* Botons d'Acció al Header */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.btn-header-phone {
+  display: none;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.15rem;
+  background: var(--surface-cream);
+  border: 1px solid var(--border-warm);
+  color: var(--obsidian-black);
+  font-family: var(--font-primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+}
+
+@media (min-width: 768px) {
+  .btn-header-phone {
+    display: inline-flex;
+  }
+}
+
+.btn-header-phone:hover {
+  background: var(--surface-tint);
+  border-color: var(--crimson-red);
+  color: var(--crimson-red);
+}
+
+.btn-header-booking {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  background: var(--crimson-red);
+  color: var(--pure-white);
+  font-family: var(--font-primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(221, 24, 59, 0.25);
+}
+
+.btn-header-booking:hover {
+  background: var(--crimson-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--crimson-glow);
+}
+
+.mobile-menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-cream);
+  border: 1px solid var(--border-warm);
+  border-radius: var(--radius-xs);
+}
+
+@media (min-width: 1024px) {
+  .mobile-menu-toggle {
+    display: none;
+  }
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--obsidian-black);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.mobile-menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.mobile-menu-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Panell Mòbil */
+.mobile-nav-panel {
+  display: none;
+  background: var(--snow-white);
+  border-bottom: 2px solid var(--border-warm);
+  padding: 1.5rem var(--gutter);
+}
+
+.mobile-nav-panel.open {
+  display: block;
+  animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--obsidian-black);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mobile-nav-link:hover {
+  color: var(--crimson-red);
+}
+
+/* --- BANNER EDITORIAL DE PA SENSE GLUTEN & AL·LÈRGIES (ESTRUCTURA ARQUITECTÒNICA) --- */
+.allergy-gluten-banner {
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  border-left: 4px solid #850C1E;
+  border-radius: 4px;
+  padding: 1.15rem 1.6rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.allergy-gluten-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.allergy-content-editorial {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1 1 320px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.allergy-kicker-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.allergy-kicker {
+  color: #850C1E;
+}
+
+.allergy-subkicker {
+  color: var(--text-soft);
+}
+
+.allergy-text {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+.allergy-text strong {
+  color: var(--obsidian-black);
+  font-weight: 800;
+}
+
+.allergy-editorial-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #850C1E;
+  background: rgba(133, 12, 30, 0.05);
+  border: 1px solid rgba(133, 12, 30, 0.2);
+  border-radius: 4px;
+  padding: 0.45rem 0.85rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* --- BANNER SPOTLIGHT CRIDA A L'ACCIÓ: PLATS COMBINATS --- */
+.banner-combinats-spotlight {
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, #1C1917 0%, #292524 50%, #1A1615 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(221, 24, 59, 0.25);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  color: var(--pure-white);
+  overflow: hidden;
+  position: relative;
+}
+
+.banner-combinats-spotlight::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(221, 24, 59, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.banner-combinats-inner {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 2.25rem;
+}
+
+.banner-combinats-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1.25rem;
+}
+
+.banner-combinats-price-badge {
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #F8F3E8;
+  background: rgba(229, 200, 144, 0.14);
+  border: 1px solid rgba(229, 200, 144, 0.4);
+  padding: 0.42rem 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.banner-combinats-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.banner-combinats-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.banner-combinats-title {
+  font-family: var(--font-primary);
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.banner-combinats-desc {
+  font-size: 0.95rem;
+  color: #D6D3D1;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  max-width: 680px;
+}
+
+.banner-combinats-desc strong {
+  color: #FFFFFF;
+}
+
+.banner-combinats-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.combinat-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.08);
+  color: #E7E5E4;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+}
+
+.banner-combinats-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.btn-banner-combinats {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 24px rgba(221, 24, 59, 0.4);
+  transition: all var(--transition-smooth);
+}
+
+.btn-banner-combinats:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(221, 24, 59, 0.55);
+}
+
+.banner-combinats-subnote {
+  font-size: 0.75rem;
+  color: #A8A29E;
+}
+
+@media (max-width: 768px) {
+  .banner-combinats-inner {
+    padding: 1.5rem;
+  }
+  .banner-combinats-title {
+    font-size: 1.35rem;
+  }
+  .banner-combinats-action {
+    width: 100%;
+  }
+  .btn-banner-combinats {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- HERO SCROLL-DRIVEN ANIMATION SECTION (EXPERIÈNCIA CINEMATOGRÀFICA PREMIUM) --- */
+.hero-scroll-section {
+  position: relative;
+  height: 275vh; /* Distància ideal per a una deconstrucció cinematogràfica i suau */
+  background: #0D0F14;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: clip;
+}
+
+/* Capa de fons animat per scroll en alta definició (Vídeo de la Barra John's Grobe) */
+.hero-backdrop-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#hero-scroll-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  filter: brightness(0.98) contrast(1.05) saturate(1.05);
+}
+
+.hero-backdrop-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, rgba(10, 12, 16, 0.92) 0%, rgba(10, 12, 16, 0.72) 38%, rgba(10, 12, 16, 0.04) 62%, rgba(10, 12, 16, 0.35) 100%),
+    linear-gradient(180deg, rgba(10, 12, 16, 0.45) 0%, transparent 20%, transparent 75%, rgba(10, 12, 16, 0.95) 100%);
+  pointer-events: none;
+}
+
+@media (max-width: 991px) {
+  #hero-scroll-canvas {
+    object-position: 72% center;
+  }
+  .hero-backdrop-overlay {
+    background: 
+      linear-gradient(90deg, rgba(10, 12, 16, 0.96) 0%, rgba(10, 12, 16, 0.82) 46%, rgba(10, 12, 16, 0.15) 78%, rgba(10, 12, 16, 0.45) 100%),
+      linear-gradient(180deg, rgba(10, 12, 16, 0.45) 0%, transparent 22%, transparent 75%, rgba(10, 12, 16, 0.95) 100%);
+  }
+}
+
+.hero-scroll-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 104px; /* Espai per a la càpsula flotant */
+  padding-bottom: 1.25rem;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.hero-scroll-grid {
+  max-width: 1520px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .hero-scroll-grid {
+    grid-template-columns: 0.98fr 1.25fr; /* Proporció harmònica entre text i animació */
+    gap: 3.5rem;
+  }
+}
+
+.hero-scroll-text-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 10;
+  padding: 0.5rem 0;
+}
+
+/* --- EMBLEMA GASTRONÒMIC D'AUTOR & TRADICIÓ MARINERA (DISSENY ÚNIC) --- */
+.hero-craft-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.95rem;
+  padding: 0.5rem 1.15rem 0.5rem 0.65rem;
+  background: linear-gradient(135deg, rgba(24, 28, 36, 0.92) 0%, rgba(14, 17, 22, 0.95) 100%);
+  border: 1px solid rgba(221, 24, 59, 0.45);
+  border-radius: 8px;
+  width: fit-content;
+  margin-bottom: 1.25rem;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(221, 24, 59, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-craft-seal:hover {
+  transform: translateY(-2px);
+  border-color: #FF244D;
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 28px rgba(255, 36, 77, 0.4);
+}
+
+.craft-seal-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(135deg, #E61B40 0%, #B8102E 100%);
+  color: #FFF;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(221, 24, 59, 0.4);
+}
+
+.craft-seal-badge .seal-icon {
+  font-size: 1.05rem;
+  color: #FFF;
+  animation: sealIconSway 3s ease-in-out infinite alternate;
+}
+
+@keyframes sealIconSway {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+.craft-seal-badge .seal-origin {
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.craft-seal-divider {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.craft-seal-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.seal-headline {
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #F8FAFC;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.seal-subline {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #94A3B8;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.seal-subline .seal-year {
+  color: #FF6B8B;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+/* Tipografia Monumental de Gran Impacte (Estil Web de Milers d'Euros) */
+.hero-venue-name {
+  font-family: var(--font-primary);
+  font-size: clamp(3.6rem, 6.2vw, 6.2rem);
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  margin: 0 0 0.85rem 0;
+  position: relative;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* --- LEMA GASTRONÒMIC OFICIAL EN TIPOGRAFIA NOBLE GRAVADA (EST. 2006) --- */
+.hero-quote-slogan.hero-noble-slogan {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-primary);
+  font-size: clamp(1.25rem, 2.2vw, 1.85rem);
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 1.35rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  padding-bottom: 0.5rem;
+  user-select: none;
+}
+
+.hero-quote-slogan.hero-noble-slogan::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(217, 119, 6, 0.85) 0%, rgba(221, 24, 59, 0.6) 60%, transparent 100%);
+  border-radius: 2px;
+}
+
+.noble-quote-mark {
+  color: #D97706;
+  opacity: 0.9;
+  font-family: var(--font-primary);
+  font-size: 1.1em;
+  font-weight: 800;
+  margin: 0 0.15rem;
+  display: inline-block;
+  vertical-align: -1px;
+}
+
+.noble-slogan-text {
+  background: linear-gradient(135deg, #FFFFFF 25%, #FDE68A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.65);
+  font-weight: 700;
+}
+
+.hero-venue-short-desc {
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  color: #D1D5DB;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 1.75rem;
+  border-left: 3px solid var(--crimson-red);
+  padding-left: 1.25rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.hero-buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.btn-primary-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.95rem 2.2rem;
+  background: linear-gradient(135deg, #E61B40 0%, #C41232 100%);
+  color: var(--pure-white);
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-xs);
+  box-shadow: 0 8px 24px rgba(221, 24, 59, 0.32), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecte Shimmer d'alta gamma per al botó principal */
+.btn-primary-brand::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  animation: btnShimmerSweep 4.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+@keyframes btnShimmerSweep {
+  0%, 75% { left: -130%; }
+  90%, 100% { left: 140%; }
+}
+
+.btn-primary-brand::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: rotate(25deg);
+  transition: all 0.65s ease;
+}
+
+.btn-primary-brand:hover::after {
+  left: 130%;
+}
+
+.btn-primary-brand:hover {
+  background: linear-gradient(135deg, #F01E45 0%, #D41437 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(221, 24, 59, 0.45);
+}
+
+.btn-secondary-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.8rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #FFFFFF;
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-xs);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary-brand:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #FF244D;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(221, 24, 59, 0.25);
+}
+
+/* Indicador de Reserves Obertes en Viu (Live Booking Pulse) */
+.live-booking-pulse {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  margin-right: 0.15rem;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10B981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10B981;
+  position: relative;
+}
+
+.pulse-dot::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.5);
+  animation: pulseDotAnim 2s infinite ease-out;
+}
+
+@keyframes pulseDotAnim {
+  0% { transform: scale(0.8); opacity: 0.95; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.booking-text-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  line-height: 1.15;
+}
+
+.booking-main-label {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+}
+
+.booking-sub-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #6EE7B7;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Segells d'excel·lència i artesania al Hero amb micro-interaccions */
+.hero-trust-badges {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1.15rem;
+  background: rgba(14, 18, 24, 0.76);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-trust-badges:hover {
+  border-color: rgba(221, 24, 59, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 24px rgba(221, 24, 59, 0.2);
+}
+
+.hero-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #E2E8F0;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+}
+
+.hero-trust-item:hover {
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.hero-trust-item .trust-icon {
+  font-size: 1.15rem;
+  color: #FF244D;
+  transition: all 0.25s ease;
+}
+
+.hero-trust-item:hover .trust-icon {
+  color: #FF4D6D;
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 6px rgba(255, 77, 109, 0.7));
+}
+
+.hero-trust-sep {
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 36, 77, 0.6);
+  border-radius: 50%;
+}
+
+/* Zona d'Interacció & Badges Dinàmics sobre el Fons de Vídeo */
+.hero-scroll-canvas-col {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  pointer-events: none;
+}
+
+
+
+/* --- INDICADOR INTERACTIU DE SCROLL ("SCRUBBING CUE") --- */
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 1.15rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  z-index: 20;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-scroll-cue.is-hidden {
+  opacity: 0;
+  transform: translate(-50%, 14px);
+  pointer-events: none;
+}
+
+.scroll-cue-mouse {
+  width: 22px;
+  height: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6), inset 0 0 6px rgba(221, 24, 59, 0.25);
+  background: rgba(14, 18, 24, 0.55);
+  backdrop-filter: blur(8px);
+}
+
+.scroll-cue-wheel {
+  width: 3px;
+  height: 6px;
+  background: #FF244D;
+  border-radius: 2px;
+  box-shadow: 0 0 6px #FF244D;
+  animation: scrollWheelPulse 2s infinite ease-in-out;
+}
+
+@keyframes scrollWheelPulse {
+  0% { transform: translateY(0); opacity: 1; }
+  60% { transform: translateY(8px); opacity: 0; }
+  61% { transform: translateY(0); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.scroll-cue-label {
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+  white-space: nowrap;
+}
+
+.scroll-cue-chevron {
+  font-size: 1.1rem;
+  color: #FF4D6D;
+  animation: scrollChevronBounce 1.8s infinite ease-in-out;
+}
+
+@keyframes scrollChevronBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.65; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+
+/* Contenidor de Brases i Espurnes de Graella Artesanal (Ambient Culinary Premium) */
+.hero-ember-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.ember-spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #FFA726;
+  box-shadow: 0 0 8px #FF5722, 0 0 16px #E61B40;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ember-spark.spark-1 {
+  left: 28%;
+  bottom: 18%;
+  width: 5px;
+  height: 5px;
+  animation: emberRise1 6s infinite ease-in;
+}
+
+.ember-spark.spark-2 {
+  left: 68%;
+  bottom: 22%;
+  width: 4px;
+  height: 4px;
+  animation: emberRise2 7.5s infinite ease-in 1.2s;
+}
+
+.ember-spark.spark-3 {
+  left: 45%;
+  bottom: 15%;
+  width: 6px;
+  height: 6px;
+  animation: emberRise1 8.2s infinite ease-in 2.5s;
+}
+
+.ember-spark.spark-4 {
+  left: 82%;
+  bottom: 28%;
+  width: 3px;
+  height: 3px;
+  animation: emberRise2 5.8s infinite ease-in 0.8s;
+}
+
+.ember-spark.spark-5 {
+  left: 18%;
+  bottom: 25%;
+  width: 4px;
+  height: 4px;
+  animation: emberRise1 6.8s infinite ease-in 3.5s;
+}
+
+.ember-spark.spark-6 {
+  left: 55%;
+  bottom: 12%;
+  width: 5px;
+  height: 5px;
+  animation: emberRise2 7.2s infinite ease-in 4.2s;
+}
+
+@keyframes emberRise1 {
+  0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+  20% { opacity: 0.85; }
+  60% { transform: translate(15px, -180px) scale(1.1); opacity: 0.7; }
+  100% { transform: translate(-20px, -360px) scale(0.3); opacity: 0; }
+}
+
+@keyframes emberRise2 {
+  0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+  25% { opacity: 0.9; }
+  65% { transform: translate(-18px, -200px) scale(1); opacity: 0.65; }
+  100% { transform: translate(25px, -400px) scale(0.2); opacity: 0; }
+}
+
+/* Badges Dinàmics d'Ingredients en Deconstrucció (Luxury Glassmorphic Dark) */
+.floating-ingredient-chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: rgba(18, 22, 28, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 36, 77, 0.4);
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 2px 14px rgba(221, 24, 59, 0.25);
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(16px) scale(0.92);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floating-ingredient-chip.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.chip-badge-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.floating-ingredient-chip .chip-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.floating-ingredient-chip .chip-title {
+  font-family: var(--font-primary);
+  font-size: 0.86rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.floating-ingredient-chip .chip-sub {
+  font-size: 0.72rem;
+  color: #FF6B8B;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Posicions dels 5 badges flotants d'ingredients */
+.chip-brioche { top: 12%; right: 2%; }
+.chip-baco { top: 27%; left: 4%; }
+.chip-formatge { top: 43%; right: 0%; }
+.chip-vedella { top: 60%; left: 6%; }
+.chip-salsa { bottom: 14%; right: 4%; }
+
+@media (max-width: 1280px) {
+  .chip-brioche { right: 0%; top: 10%; }
+  .chip-baco { left: 0%; top: 26%; }
+  .chip-formatge { right: 0%; top: 42%; }
+  .chip-vedella { left: 0%; top: 58%; }
+  .chip-salsa { right: 0%; bottom: 12%; }
+}
+
+/* Píldora Dinàmica d'Ingredients per a Mòbils */
+.mobile-live-ingredient-pill {
+  display: none;
+}
+
+/* --- RESPONSIVE D'ALTA DEFINICIÓ PER A MÒBIL I TABLET (< 992px) --- */
+@media (max-width: 991px) {
+  .nav-container {
+    height: 66px;
+  }
+
+  .brand-logo-img {
+    height: 44px;
+  }
+
+  .brand-name {
+    font-size: 1.25rem;
+  }
+
+  .floating-ingredient-chip {
+    display: none !important;
+  }
+
+  .mobile-live-ingredient-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(221, 24, 59, 0.3);
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+    z-index: 10;
+    pointer-events: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+  }
+
+  .live-pill-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--crimson-red);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--crimson-red);
+    animation: pulseDot 1.8s infinite;
+  }
+
+  .live-pill-text {
+    font-family: var(--font-primary);
+    font-size: 0.74rem;
+    font-weight: 800;
+    color: var(--obsidian-black);
+    letter-spacing: 0.02em;
+  }
+
+  .hero-scroll-section {
+    height: 205vh;
+  }
+
+  .hero-scroll-sticky {
+    height: 100vh;
+    height: 100svh;
+    padding-top: 84px;
+    padding-bottom: 0.85rem;
+    justify-content: space-between;
+  }
+
+  .hero-scroll-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    padding: 0.5rem var(--gutter);
+    text-align: left;
+  }
+
+  .hero-scroll-text-col {
+    padding: 0;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    max-width: min(540px, 86vw);
+    z-index: 5;
+  }
+
+  .hero-craft-seal {
+    display: none !important;
+  }
+
+  .hero-venue-name {
+    font-size: clamp(2.3rem, 6.2vw, 3.8rem);
+    margin-bottom: 0.25rem;
+    line-height: 0.98;
+    text-align: left;
+  }
+
+  .hero-quote-slogan {
+    font-size: clamp(1.05rem, 3vw, 1.45rem);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .hero-venue-short-desc {
+    display: block;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 0.85rem;
+    padding-left: 0.85rem;
+    border-left: 3px solid var(--crimson-red);
+    max-width: 460px;
+    text-align: left;
+    color: #E2E8F0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.65rem;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.72rem;
+    margin: 0;
+  }
+
+  .hero-buttons-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.65rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .btn-primary-brand,
+  .btn-secondary-brand {
+    padding: 0.75rem 1.35rem;
+    font-size: 0.8rem;
+  }
+
+  .hero-scroll-canvas-col {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-scroll-sticky {
+    padding-top: 78px;
+  }
+
+  .hero-venue-name {
+    font-size: 2.15rem;
+  }
+
+  .hero-quote-slogan {
+    font-size: 0.96rem;
+  }
+
+  .hero-venue-short-desc {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    max-width: 320px;
+  }
+
+  .btn-primary-brand,
+  .btn-secondary-brand {
+    padding: 0.65rem 1rem;
+    font-size: 0.76rem;
+  }
+
+  .hero-trust-badges {
+    font-size: 0.66rem;
+    padding: 0.3rem 0.65rem;
+  }
+
+  #hero-scroll-canvas {
+    object-position: 78% center;
+  }
+}
+
+/* --- SECCIÓ SHOWCASE: PLATS COMBINATS TRADICIONALS (AMB PAUSA DE SCROLL I CARRUSEL) --- */
+.combinats-scroll-pin-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .combinats-scroll-pin-wrapper {
+    height: 165vh; /* Pausa elegant d'scroll (65vh de retenció de lectura) */
+  }
+
+  .combinats-scroll-pin-wrapper .section-combinats-showcase {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 4.8rem;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 992px) and (max-height: 850px) {
+  .combinats-scroll-pin-wrapper .section-combinats-showcase {
+    padding-top: 3.8rem;
+    padding-bottom: 1.5rem;
+  }
+  .combinat-floating-img.img-cinematic,
+  .combinat-floating-img.img-plate-shadow {
+    height: 410px;
+  }
+}
+
+.section-combinats-showcase {
+  position: relative;
+  padding: 5.5rem var(--gutter);
+  overflow: hidden;
+  background: #0E1217;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Fons Desenfocat i Agrisat Fosc del Local - Clarament visible i elegant */
+.combinats-showcase-backdrop {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  background-size: cover;
+  background-position: center 35%;
+  filter: grayscale(100%) blur(4px) brightness(0.92) contrast(1.1);
+  transform: scale(1.02);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.75;
+}
+
+.combinats-backdrop-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10, 14, 20, 0.4) 0%, rgba(10, 14, 20, 0.75) 100%),
+              linear-gradient(180deg, rgba(10, 14, 20, 0.45) 0%, rgba(10, 14, 20, 0.7) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.combinats-showcase-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .combinats-showcase-container {
+    grid-template-columns: 1.35fr 1fr;
+    gap: 4.5rem;
+  }
+}
+
+/* Columna Esquerra: Showcase Gran de Plats Flotant */
+.combinats-carousel-col {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.combinats-floating-stage {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Resplendor d'ambient suau sota el plat */
+.stage-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(221, 24, 59, 0.22) 0%, rgba(252, 211, 77, 0.08) 40%, transparent 70%);
+  filter: blur(45px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Viewport del Slider */
+.combinats-slider-viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  z-index: 2;
+}
+
+/* Track de Desplaçament Suau i Cinematogràfic */
+.combinats-slides-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.combinat-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.combinat-dish-stage-visual {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Imatge cinematogràfica amb difuminat suau i progressiu als marges */
+.combinat-floating-img.img-cinematic {
+  width: 100%;
+  max-width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 16px;
+  -webkit-mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, black 65%, rgba(0, 0, 0, 0.8) 78%, rgba(0, 0, 0, 0.3) 90%, transparent 100%);
+  mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, black 65%, rgba(0, 0, 0, 0.8) 78%, rgba(0, 0, 0, 0.3) 90%, transparent 100%);
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.9);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 1280px) {
+  .combinat-floating-img.img-cinematic {
+    height: 520px;
+  }
+}
+
+/* Imatge de Botifarra (Totalment continguda, sense desbordament lateral) */
+.combinat-floating-img.img-plate-shadow {
+  width: 100%;
+  max-width: 100%;
+  height: 480px;
+  object-fit: contain;
+  transform: scale(1);
+  filter: drop-shadow(0 35px 50px rgba(0, 0, 0, 0.95));
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 1280px) {
+  .combinat-floating-img.img-plate-shadow {
+    height: 520px;
+    transform: scale(1);
+  }
+}
+
+.combinat-dish-stage-visual:hover .combinat-floating-img {
+  transform: scale(1.03);
+}
+
+/* Fletxes de Navegació Flotants al Slider */
+.btn-slide-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(14, 18, 23, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-fast);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.btn-slide-nav.btn-prev {
+  left: 1.25rem;
+}
+
+.btn-slide-nav.btn-next {
+  right: 1.25rem;
+}
+
+.btn-slide-nav:hover {
+  background: var(--crimson-red);
+  border-color: var(--crimson-red);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 10px 28px rgba(221, 24, 59, 0.55);
+}
+
+/* Càpsula flotant moderna amb títol i preu */
+.floating-dish-capsule {
+  margin-top: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: rgba(18, 22, 28, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(221, 24, 59, 0.25) inset;
+}
+
+.floating-dish-capsule .capsule-icon {
+  font-size: 1.25rem;
+}
+
+.floating-dish-capsule .capsule-title {
+  font-family: var(--font-primary);
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+}
+
+.floating-dish-capsule .capsule-price {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #FCD34D;
+  background: rgba(252, 211, 77, 0.14);
+  border: 1px solid rgba(252, 211, 77, 0.4);
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-pill);
+}
+
+/* Controls del selector de plats flotant */
+.combinats-stage-controls {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  z-index: 3;
+}
+
+.stage-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #D6D3D1;
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 800;
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.stage-nav-pill .pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transition: all var(--transition-fast);
+}
+
+.stage-nav-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.stage-nav-pill.active {
+  background: rgba(221, 24, 59, 0.18);
+  border-color: var(--crimson-red);
+  color: #FFFFFF;
+  box-shadow: 0 4px 18px rgba(221, 24, 59, 0.35);
+}
+
+.stage-nav-pill.active .pill-dot {
+  background: var(--crimson-red);
+  box-shadow: 0 0 10px var(--crimson-red);
+}
+
+/* Columna Dreta: Narrativa Gastronòmica */
+.combinats-narrative-col {
+  color: #FFFFFF;
+}
+
+.combinats-section-title {
+  font-family: var(--font-primary);
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.18;
+  margin: 1rem 0 1.25rem 0;
+  letter-spacing: -0.02em;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.combinats-section-desc {
+  font-size: 1.02rem;
+  color: #D6D3D1;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+.combinats-section-desc strong {
+  color: #FFFFFF;
+}
+
+.combinats-perks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2.25rem;
+}
+
+.combinat-perk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.perk-icon-wrap {
+  width: 44px;
+  height: 44px;
+  background: rgba(221, 24, 59, 0.15);
+  border: 1px solid rgba(221, 24, 59, 0.35);
+  color: #FF6B81;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.perk-icon-wrap .material-symbols-outlined {
+  font-size: 1.35rem;
+}
+
+.perk-title {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 0.2rem 0;
+}
+
+.perk-desc {
+  font-size: 0.88rem;
+  color: #A8A29E;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.combinats-cta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: 0.5rem;
+}
+
+.btn-combinats-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.95rem 2rem;
+  font-size: 1rem;
+  box-shadow: 0 8px 24px rgba(221, 24, 59, 0.45);
+}
+
+.combinats-price-hint {
+  font-size: 0.95rem;
+  color: #A8A29E;
+}
+
+.combinats-price-hint strong {
+  color: #FCD34D;
+  font-size: 1.15rem;
+  font-family: var(--font-primary);
+}
+
+/* Visibilitat per a Mobile UX First (Títol primer, carrusel després) */
+.combinats-mobile-header {
+  display: none;
+}
+
+.combinats-desktop-header {
+  display: block;
+}
+
+@media (max-width: 1023px) {
+  .combinats-mobile-header {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+
+  .combinats-desktop-header {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-combinats-showcase {
+    padding: 2.25rem var(--gutter) 2.5rem;
+  }
+
+  .combinats-showcase-container {
+    gap: 1.35rem;
+  }
+
+  .stage-ambient-glow {
+    width: 320px;
+    height: 220px;
+    filter: blur(35px);
+  }
+
+  .combinats-slider-viewport {
+    border-radius: 10px;
+  }
+
+  /* Alçada Panoràmica Adaptada per a Mòbils (iPhone: 260px-275px) */
+  .combinat-floating-img.img-cinematic {
+    height: clamp(230px, 58vw, 270px);
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .combinat-floating-img.img-plate-shadow {
+    height: clamp(230px, 58vw, 270px);
+    object-fit: contain;
+  }
+
+  /* Fletxes de navegació flotants compactes per a mòbils */
+  .btn-slide-nav {
+    width: 38px;
+    height: 38px;
+    background: rgba(14, 18, 23, 0.75);
+  }
+
+  .btn-slide-nav .material-symbols-outlined {
+    font-size: 1.25rem;
+  }
+
+  .btn-slide-nav.btn-prev {
+    left: 0.5rem;
+  }
+
+  .btn-slide-nav.btn-next {
+    right: 0.5rem;
+  }
+
+  .combinats-section-title {
+    font-size: clamp(1.4rem, 5.2vw, 1.7rem);
+    line-height: 1.22;
+    margin: 0.6rem 0 0.85rem 0;
+  }
+
+  .combinats-section-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 1.4rem;
+  }
+
+  .combinats-perks-list {
+    gap: 0.95rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .perk-icon-wrap {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .perk-icon-wrap .material-symbols-outlined {
+    font-size: 1.2rem;
+  }
+
+  .perk-title {
+    font-size: 0.95rem;
+  }
+
+  .perk-desc {
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  .combinats-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .btn-combinats-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .combinats-price-hint {
+    text-align: center;
+    font-size: 0.88rem;
+  }
+}
+
+/* --- SECCIÓ GAUDEIX! (BENTO GRID AMB IMATGES COHERENTS) --- */
+.section-bento-categories {
+  padding: calc(var(--section-gap) + 1.5rem) var(--gutter) var(--section-gap);
+  background: linear-gradient(180deg, #0D0F14 0%, #151A24 45px, rgba(255, 249, 246, 0.95) 120px, var(--snow-white) 160px);
+  border-bottom: 1px solid var(--border-warm);
+  position: relative;
+}
+
+.bento-header-wrapper {
+  max-width: 1380px;
+  margin: 0 auto 2.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-bottom: 1px solid var(--border-warm);
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .bento-header-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+/* Botó d'exploració amb alt contrast sobre fons clar */
+.bento-header-wrapper .btn-secondary-brand {
+  background: var(--pure-white);
+  color: var(--crimson-red);
+  border: 1.5px solid var(--border-crimson);
+  box-shadow: 0 4px 14px rgba(221, 24, 59, 0.12);
+  font-weight: 800;
+}
+
+.bento-header-wrapper .btn-secondary-brand:hover {
+  background: var(--surface-tint);
+  border-color: var(--crimson-red);
+  color: var(--crimson-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(221, 24, 59, 0.22);
+}
+
+.section-tag-red {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  background: rgba(133, 12, 30, 0.06);
+  border: 1px solid rgba(133, 12, 30, 0.22);
+  border-left: 3px solid #850C1E;
+  border-radius: 4px;
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  font-weight: 900;
+  color: #850C1E;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: 0.85rem;
+  width: fit-content;
+  box-shadow: 0 2px 8px rgba(133, 12, 30, 0.05);
+}
+
+.section-tag-red .noble-symbol {
+  color: #B8102E;
+  font-size: 0.72rem;
+}
+
+.bento-num {
+  color: #D97706;
+  font-family: var(--font-primary);
+  font-weight: 800;
+  margin-right: 0.35rem;
+  letter-spacing: 0.04em;
+}
+
+.section-title-bold {
+  font-family: var(--font-primary);
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: var(--obsidian-black);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .section-title-bold {
+    font-size: 2.6rem;
+  }
+}
+
+.bento-grid-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  border: 1px solid var(--border-warm);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background: var(--pure-white);
+  box-shadow: var(--shadow-card);
+}
+
+.bento-tile {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-cream);
+  display: block;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-warm);
+  border-right: 1px solid var(--border-warm);
+}
+
+/* En mòbil: tile-large (Hamburgueses) ocupa les 2 columnes senceres */
+.bento-tile.tile-large {
+  grid-column: span 2;
+  height: clamp(210px, 56vw, 270px);
+}
+
+/* En mòbil: les 6 categories següents s'agrupen de 2 en 2 en 3 files */
+.bento-tile.tile-medium {
+  grid-column: span 1;
+  height: clamp(140px, 38vw, 185px);
+}
+
+.bento-tile picture,
+.bestseller-media picture,
+.nosaltres-media-panel picture,
+.combinat-dish-stage-visual picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.bento-tile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.7s var(--transition-smooth);
+}
+
+.bento-tile:hover .bento-tile-image {
+  transform: scale(1.08);
+}
+
+.bento-tile-shade {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.42);
+  transition: background var(--transition-fast);
+  z-index: 2;
+}
+
+.bento-tile:hover .bento-tile-shade {
+  background: rgba(15, 23, 42, 0.28);
+}
+
+.bento-tile-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.45) 60%, transparent 100%);
+}
+
+.bento-tile.tile-large .bento-tile-info {
+  padding: 1.35rem 1.5rem;
+}
+
+.bento-title-text {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.bento-tile.tile-large .bento-title-text {
+  font-size: 1.6rem;
+}
+
+.bento-sub-text {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.88);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.bento-action-arrow {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.bento-tile.tile-large .bento-action-arrow {
+  width: 40px;
+  height: 40px;
+}
+
+.bento-tile:hover .bento-action-arrow {
+  background: var(--crimson-red);
+  border-color: var(--crimson-red);
+  transform: translateX(3px);
+}
+
+.bento-tile.tile-beer-bar {
+  position: relative;
+}
+
+/* Fallback per a telèfons molt estrets (< 350px) */
+@media (max-width: 350px) {
+  .bento-grid-container {
+    grid-template-columns: 1fr;
+  }
+  .bento-tile.tile-large,
+  .bento-tile.tile-medium {
+    grid-column: span 1;
+    height: 180px;
+  }
+}
+
+/* Tablets (640px a 991px): 2 columnes amb alçada generosa */
+@media (min-width: 640px) and (max-width: 991px) {
+  .bento-tile.tile-large {
+    height: 290px;
+  }
+  
+  .bento-tile.tile-medium {
+    height: 200px;
+  }
+
+  .bento-tile-info {
+    padding: 1.25rem;
+  }
+
+  .bento-title-text {
+    font-size: 1.25rem;
+  }
+
+  .bento-sub-text {
+    font-size: 0.78rem;
+  }
+}
+
+/* Desktop (> 992px): Graella editorial clàssica de 4 columnes i 290px per cel·la */
+@media (min-width: 992px) {
+  .bento-grid-container {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 290px;
+  }
+
+  .bento-tile.tile-large {
+    grid-column: span 2;
+    grid-row: span 2;
+    height: auto;
+  }
+
+  .bento-tile.tile-medium {
+    grid-column: span 1;
+    grid-row: span 1;
+    height: auto;
+  }
+
+  .bento-tile-info {
+    padding: 1.75rem;
+  }
+
+  .bento-tile.tile-large .bento-tile-info {
+    padding: 2.5rem;
+  }
+
+  .bento-title-text {
+    font-size: 1.55rem;
+  }
+
+  .bento-tile.tile-large .bento-title-text {
+    font-size: 2.3rem;
+  }
+
+  .bento-sub-text {
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    margin-top: 0.35rem;
+  }
+
+  .bento-action-arrow {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* --- SECCIÓ CARTA COMPLETA --- */
+.section-complete-menu {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--surface-cream);
+  border-bottom: 1px solid var(--border-warm);
+}
+
+.menu-wrapper-box {
+  max-width: 1380px;
+  margin: 0 auto;
+}
+
+.menu-intro-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 2.75rem auto;
+}
+
+.menu-intro-header p {
+  color: var(--text-soft);
+  font-size: 1.05rem;
+}
+
+/* Controls de Filtre */
+.menu-tabs-sticky-wrapper {
+  position: sticky;
+  top: 92px;
+  z-index: 40;
+  margin-bottom: 2rem;
+}
+
+.menu-tabs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  background: rgba(255, 249, 246, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 0.85rem 1.15rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-warm);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+  transition: all 0.3s ease;
+}
+
+.menu-tab-btn {
+  padding: 0.75rem 1.4rem;
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  color: var(--obsidian-black);
+  font-family: var(--font-primary);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 9999px;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.menu-tab-btn:hover {
+  background: var(--surface-tint);
+  border-color: var(--crimson-red);
+  color: var(--crimson-red);
+  transform: translateY(-1px);
+}
+
+.menu-tab-btn.active {
+  background: var(--crimson-red);
+  color: var(--pure-white);
+  border-color: var(--crimson-red);
+  box-shadow: 0 4px 14px rgba(221, 24, 59, 0.3);
+}
+
+.menu-search-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.search-and-sort-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+}
+
+.search-box-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1 1 260px;
+  min-height: 46px;
+  height: 46px;
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.search-box-field:focus-within {
+  border-color: var(--crimson-red);
+  box-shadow: 0 0 0 3px rgba(221, 24, 59, 0.12);
+}
+
+.search-box-field input {
+  width: 100%;
+  height: 100%;
+  padding: 0 2.4rem 0 2.75rem;
+  background: transparent;
+  border: none;
+  font-family: var(--font-primary);
+  font-size: 0.92rem;
+  color: var(--obsidian-black);
+  outline: none;
+}
+
+.search-box-field .search-icon-pos {
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.btn-clear-search {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--obsidian-black);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-clear-search:hover {
+  background: var(--crimson-red);
+  color: #fff;
+}
+
+/* Selector d'Ordenació */
+.sort-selector-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  padding: 0 0.85rem;
+  height: 46px;
+  min-height: 46px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  flex-shrink: 0;
+}
+
+.sort-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.sort-label .sort-icon {
+  font-size: 1.15rem;
+  color: var(--crimson-red);
+}
+
+.menu-sort-select {
+  border: none;
+  background: transparent;
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--obsidian-black);
+  outline: none;
+  cursor: pointer;
+  padding: 0.35rem 0.25rem;
+  height: 100%;
+}
+
+.menu-sort-select:focus {
+  color: var(--crimson-red);
+}
+
+.dietary-chips-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.dietary-chip {
+  padding: 0.45rem 1rem;
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--text-soft);
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  white-space: nowrap;
+}
+
+.dietary-chip.active, .dietary-chip:hover {
+  background: var(--surface-tint);
+  border-color: var(--crimson-red);
+  color: var(--crimson-red);
+  transform: translateY(-1px);
+}
+
+.dietary-chip.active {
+  background: var(--crimson-red);
+  color: #ffffff;
+  border-color: var(--crimson-red);
+  box-shadow: 0 3px 8px rgba(221, 24, 59, 0.25);
+}
+
+/* Barra d'Estat i Resum de Resultats */
+.menu-results-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 1rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: var(--radius-sm);
+  margin-bottom: 2rem;
+  border: 1px dashed var(--border-warm);
+}
+
+.results-count-text {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
+.results-count-text strong {
+  color: var(--crimson-red);
+  font-weight: 800;
+}
+
+/* Selector Dinàmic de Vista (1 Columna vs 2 Columnes Bento) */
+.view-mode-toggle {
+  display: none; /* Ocult per defecte en escriptori */
+  align-items: center;
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.btn-view-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-soft);
+  font-family: var(--font-primary);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  line-height: 1;
+}
+
+.btn-view-toggle .material-symbols-outlined {
+  font-size: 1.15rem;
+}
+
+.btn-view-toggle:hover {
+  color: var(--obsidian-black);
+}
+
+.btn-view-toggle.active {
+  background: var(--crimson-red);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(221, 24, 59, 0.3);
+}
+
+.btn-reset-filters {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: none;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--crimson-red);
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.btn-reset-filters:hover {
+  background: rgba(221, 24, 59, 0.08);
+  text-decoration: underline;
+}
+
+/* Targetes de la Carta */
+.products-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .products-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .products-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dish-card {
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-smooth);
+  box-shadow: var(--shadow-card);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  animation: cardFadeUp 0.35s ease forwards;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+@keyframes cardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dish-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(221, 24, 59, 0.4);
+  box-shadow: 0 16px 36px rgba(221, 24, 59, 0.1);
+}
+
+.dish-card-media {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  background: var(--surface-cream);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-warm);
+}
+
+.dish-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dish-card:hover .dish-card-image {
+  transform: scale(1.07);
+}
+
+/* Indicador tàctil de fitxa detallada a la targeta */
+.dish-card-tap-cue {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(10, 13, 18, 0.88);
+  color: #FFFFFF;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  opacity: 0.85;
+  transition: all var(--transition-fast);
+  z-index: 2;
+}
+
+.dish-card:hover .dish-card-tap-cue,
+.dish-card:focus .dish-card-tap-cue {
+  background: var(--crimson-red);
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.dish-card-tap-cue span {
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* Badges d'alta gamma: Estil Obsidian Glass & Micro-Border (Elegants, imponents i sobris) */
+/* Badges gastronòmics de la Carta: Estil Noble Bistro Borgoña & Or Champán (idèntic a Best Sellers) */
+.dish-badge-flag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: linear-gradient(135deg, #78101E 0%, #4B0A14 100%);
+  border: 1px solid rgba(229, 200, 144, 0.45);
+  color: #F8F3E8;
+  font-family: var(--font-primary, 'Nunito Sans', sans-serif);
+  font-size: 0.64rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  transition: all var(--transition-fast);
+}
+
+.dish-badge-flag::before {
+  display: none !important;
+}
+
+.dish-gluten-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #10553C 0%, #0A3728 100%);
+  border: 1px solid rgba(167, 243, 208, 0.4);
+  color: #ECFDF5;
+  font-family: var(--font-primary);
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  line-height: 1;
+  transition: all var(--transition-fast);
+}
+
+/* Badges especialitzats per dieta i tipus de plat amb acabat noble i vora champán */
+.dish-badge-flag.dish-badge-vegan {
+  background: linear-gradient(135deg, rgba(16, 95, 68, 0.94) 0%, rgba(10, 60, 42, 0.96) 100%);
+  border-color: rgba(167, 243, 208, 0.45);
+  color: #ECFDF5;
+}
+.dish-badge-flag.dish-badge-vegan::before {
+  display: none !important;
+}
+
+.dish-badge-flag.dish-badge-veggie {
+  background: linear-gradient(135deg, rgba(20, 88, 50, 0.94) 0%, rgba(12, 58, 32, 0.96) 100%);
+  border-color: rgba(187, 247, 208, 0.45);
+  color: #F0FDF4;
+}
+.dish-badge-flag.dish-badge-veggie::before {
+  display: none !important;
+}
+
+.dish-badge-flag.dish-badge-pesce {
+  background: linear-gradient(135deg, rgba(14, 65, 110, 0.94) 0%, rgba(8, 42, 75, 0.96) 100%);
+  border-color: rgba(186, 230, 253, 0.45);
+  color: #F0F9FF;
+}
+.dish-badge-flag.dish-badge-pesce::before {
+  display: none !important;
+}
+
+.dish-badge-flag.dish-badge-bestseller {
+  background: linear-gradient(135deg, rgba(135, 12, 30, 0.96) 0%, rgba(85, 8, 20, 0.98) 100%);
+  border-color: rgba(229, 200, 144, 0.65);
+  color: #FFFDF9;
+  box-shadow: 0 4px 18px rgba(135, 12, 30, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+/* Secció de Categoria Desencapsulada amb Desplegament Suau (Opció 1 + Opció 3) */
+.menu-category-accordion {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 1.75rem;
+  margin-bottom: 1.5rem;
+  background: transparent !important;
+  border: none !important;
+  border-left: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  transition: margin var(--transition-fast);
+}
+
+.menu-category-accordion.is-open {
+  border: none !important;
+  border-left: none !important;
+  box-shadow: none !important;
+}
+
+.category-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.05rem 1.4rem;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF9 100%);
+  border: 1px solid var(--border-warm);
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+}
+
+.category-accordion-trigger:hover {
+  background: #FFFFFF;
+  border-color: rgba(221, 24, 59, 0.35);
+  box-shadow: 0 4px 18px rgba(221, 24, 59, 0.08);
+}
+
+.menu-category-accordion.is-open .category-accordion-trigger {
+  background: #FFFFFF;
+  border-color: rgba(221, 24, 59, 0.25);
+}
+
+.category-accordion-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.category-accordion-chevron {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(221, 24, 59, 0.08);
+  border: 1px solid rgba(221, 24, 59, 0.2);
+  color: var(--crimson-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.menu-category-accordion.is-open .category-accordion-chevron {
+  transform: rotate(180deg);
+  background: var(--crimson-red);
+  border-color: var(--crimson-red);
+  color: #FFFFFF;
+}
+
+.category-accordion-body {
+  padding: 1.25rem 0 0.5rem 0;
+  border-top: none !important;
+  background: transparent !important;
+}
+
+.category-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .category-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .category-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Animació Suau en Cascada al Desplegar Targetes (Opció 3) */
+@keyframes categoryCardsFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-category-accordion.is-open .category-cards-grid .dish-card {
+  animation: categoryCardsFadeIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.menu-category-accordion.is-open .category-cards-grid .dish-card:nth-child(1) { animation-delay: 0.02s; }
+.menu-category-accordion.is-open .category-cards-grid .dish-card:nth-child(2) { animation-delay: 0.05s; }
+.menu-category-accordion.is-open .category-cards-grid .dish-card:nth-child(3) { animation-delay: 0.08s; }
+.menu-category-accordion.is-open .category-cards-grid .dish-card:nth-child(4) { animation-delay: 0.11s; }
+.menu-category-accordion.is-open .category-cards-grid .dish-card:nth-child(5) { animation-delay: 0.14s; }
+.menu-category-accordion.is-open .category-cards-grid .dish-card:nth-child(6) { animation-delay: 0.17s; }
+.menu-category-accordion.is-open .category-cards-grid .dish-card:nth-child(n+7) { animation-delay: 0.20s; }
+
+/* Botó d'acció per expandir/plegar tots els blocs */
+.btn-toggle-all-accordions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 0.85rem;
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-toggle-all-accordions:hover {
+  border-color: var(--crimson-red);
+  color: var(--crimson-red);
+}
+
+/* Divisor de Secció de Categoria Clàssic (Compatible) */
+.menu-category-section-divider {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem 1.75rem;
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--surface-cream) 100%);
+  border: 1px solid var(--border-warm);
+  border-left: 5px solid var(--crimson-red);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.category-divider-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Numeració Romana Editorial per a Divisors de Categoria (Opció 2) */
+.category-divider-numeral {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--crimson-red);
+  background: rgba(221, 24, 59, 0.08);
+  border: 1px solid rgba(221, 24, 59, 0.25);
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(221, 24, 59, 0.08);
+}
+
+.numeral-roman {
+  font-family: var(--font-primary);
+  font-weight: 900;
+}
+
+.category-divider-title {
+  font-family: var(--font-primary);
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: var(--obsidian-black);
+  margin: 0 0 0.2rem 0;
+  line-height: 1.2;
+}
+
+.category-divider-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.category-divider-count {
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--crimson-red);
+  background: rgba(221, 24, 59, 0.08);
+  border: 1px solid rgba(221, 24, 59, 0.2);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+/* Indicador de Categoria Editorial a cada Targeta (Opció 2) */
+.dish-card-category-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-primary);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--crimson-red);
+  margin-bottom: 0.45rem;
+}
+
+.dish-card-category-indicator .category-indicator-num {
+  font-weight: 900;
+  color: var(--crimson-red);
+}
+
+.dish-card-category-indicator .category-indicator-dot {
+  opacity: 0.35;
+  color: var(--text-muted);
+}
+
+.dish-card-category-indicator .category-indicator-title {
+  color: var(--text-soft);
+  letter-spacing: 0.08em;
+}
+
+/* Símbols lineals fins per a Badges i Chips (Opció 1) */
+.badge-fine-symbol,
+.chip-symbol,
+.pill-symbol {
+  display: inline-block;
+  font-size: 0.72rem;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.dish-card-body {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.dish-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.dish-title {
+  font-family: var(--font-primary);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--obsidian-black);
+  line-height: 1.25;
+}
+
+.dish-price-tag {
+  font-family: var(--font-primary);
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--crimson-red);
+  white-space: nowrap;
+}
+
+.dish-description {
+  font-size: 0.92rem;
+  color: var(--text-soft);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.dish-ingredients-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.ingredient-badge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  background: var(--surface-cream);
+  color: var(--obsidian-black);
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border-warm);
+  border-radius: 6px;
+}
+
+.dish-celiac-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #850C1E;
+  background: rgba(133, 12, 30, 0.05);
+  border: 1px solid rgba(133, 12, 30, 0.22);
+  border-radius: 4px;
+  padding: 0.32rem 0.68rem;
+  margin-top: 0.85rem;
+  width: fit-content;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  transition: all var(--transition-fast);
+}
+
+.dish-card:hover .dish-celiac-badge {
+  background: rgba(133, 12, 30, 0.09);
+  border-color: rgba(133, 12, 30, 0.35);
+}
+
+/* ==========================================================================
+   MODAL BOTTOM SHEET DE DETALL DE PLAT (BISTRO GOURMET & LUXURY SHEET)
+   ========================================================================== */
+.dish-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 13, 18, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+
+.dish-sheet-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   MINI FICHA FLOTANT CENTRADA DE DETALL DE PLAT (POPOVER COMPACTE)
+   ========================================================================== */
+.dish-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 13, 18, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.dish-sheet-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dish-sheet-container {
+  width: 100%;
+  max-width: 420px;
+  background: #FFFFFF;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  transform: scale(0.92);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  max-height: 86vh;
+  max-height: 86dvh;
+  border: 1px solid rgba(221, 24, 59, 0.22);
+}
+
+.dish-sheet-backdrop.open .dish-sheet-container {
+  transform: scale(1);
+}
+
+.dish-sheet-handle-wrap {
+  display: none !important;
+}
+
+.btn-close-dish-sheet {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(10, 13, 18, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 10;
+}
+
+.btn-close-dish-sheet:hover {
+  background: var(--crimson-red);
+  transform: scale(1.08);
+}
+
+.btn-close-dish-sheet span {
+  font-size: 1.05rem;
+}
+
+.dish-sheet-content {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Foto Protagonista i Àmplia (220px - Opció 1) */
+.dish-sheet-hero {
+  position: relative;
+  width: 100%;
+}
+
+.dish-sheet-hero-media {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  max-height: 32vh;
+  overflow: hidden;
+  background: var(--surface-cream);
+  border-bottom: 1px solid var(--border-warm);
+}
+
+.dish-sheet-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dish-sheet-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.dish-sheet-badges-floating {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  z-index: 2;
+}
+
+.sheet-badge-pill {
+  font-family: var(--font-primary);
+  font-size: 0.58rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.48rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, rgba(120, 16, 30, 0.95) 0%, rgba(75, 10, 20, 0.98) 100%);
+  border: 1px solid rgba(229, 200, 144, 0.4);
+  color: #FFFDF9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Cos de la Mini Fitxa (Condensació Opció 4) */
+.dish-sheet-main-info {
+  padding: 0.75rem 1rem 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.dish-sheet-kicker-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-primary);
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--crimson-red);
+}
+
+.dish-sheet-title-price-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.dish-sheet-name {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--obsidian-black);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.dish-sheet-price-tag {
+  font-family: var(--font-primary);
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--crimson-red);
+  white-space: nowrap;
+}
+
+.sheet-divider-line {
+  height: 1px;
+  background: var(--border-warm);
+  width: 100%;
+}
+
+.dish-sheet-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+}
+
+.dish-sheet-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-primary);
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--obsidian-black);
+  margin: 0;
+}
+
+.dish-sheet-full-desc {
+  font-size: 0.76rem;
+  line-height: 1.38;
+  color: var(--charcoal-dark);
+  margin: 0;
+}
+
+.dish-sheet-ingredients-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.dish-sheet-ing-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: var(--surface-cream);
+  border: 1px solid var(--border-warm);
+  padding: 0.15rem 0.42rem;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--obsidian-black);
+}
+
+.dish-sheet-ing-pill .pill-check-icon {
+  font-size: 0.78rem;
+  color: var(--crimson-red);
+}
+
+/* Opció celíacs compacta (Sello Artesanal Marfil & Or Champán - Opció 1 + Opció 2) */
+.dish-sheet-celiac-compact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #FFFDF9;
+  border: 1px solid rgba(229, 200, 144, 0.55);
+  border-left: 3px solid #78101E;
+  border-radius: 6px;
+  padding: 0.32rem 0.65rem;
+  font-family: var(--font-primary);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--obsidian-black);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  align-self: flex-start;
+}
+
+.dish-sheet-celiac-compact .celiac-compact-icon {
+  font-size: 0.95rem;
+  color: #B47820;
+}
+
+/* Barra d'accions: Recollir Noble + Delivery Obsidian Glass (Opció 1 + Opció 2) */
+.dish-sheet-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.15rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--border-warm);
+}
+
+.btn-sheet-call-takeaway {
+  flex: 1;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0 0.85rem;
+  background: linear-gradient(135deg, #78101E 0%, #4B0A14 100%);
+  border: 1px solid rgba(229, 200, 144, 0.45);
+  color: #FFFDF9;
+  font-family: var(--font-primary);
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 3px 12px rgba(120, 16, 30, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-sheet-call-takeaway span.material-symbols-outlined {
+  font-size: 0.95rem;
+  color: #E5C890;
+}
+
+.btn-sheet-call-takeaway:hover {
+  background: linear-gradient(135deg, #8C1323 0%, #5B0D18 100%);
+  border-color: rgba(229, 200, 144, 0.75);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 16px rgba(120, 16, 30, 0.45);
+}
+
+.dish-sheet-delivery-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.btn-sheet-delivery-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid rgba(229, 200, 144, 0.35);
+  background: #0E1218;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.btn-sheet-delivery-icon svg {
+  display: block;
+}
+
+.btn-sheet-delivery-icon:hover {
+  transform: translateY(-2px);
+}
+
+.btn-sheet-glovo:hover {
+  background: rgba(255, 194, 68, 0.16);
+  border-color: #FFC244;
+  box-shadow: 0 4px 14px rgba(255, 194, 68, 0.4);
+}
+
+.btn-sheet-uber:hover {
+  background: rgba(6, 193, 103, 0.16);
+  border-color: #06C167;
+  box-shadow: 0 4px 14px rgba(6, 193, 103, 0.4);
+}
+
+/* --- SECCIÓ NOSALTRES (BRAND OVERVIEW) --- */
+.section-nosaltres-story {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--snow-white);
+  border-bottom: 1px solid var(--border-warm);
+}
+
+.nosaltres-grid-box {
+  max-width: 1380px;
+  margin: 0 auto;
+  border: 1px solid var(--border-warm);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  background: var(--pure-white);
+  box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 992px) {
+  .nosaltres-grid-box {
+    grid-template-columns: 1fr 1.15fr;
+  }
+}
+
+.nosaltres-media-panel {
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+  background: var(--surface-cream);
+  border-bottom: 1px solid var(--border-warm);
+}
+
+@media (min-width: 992px) {
+  .nosaltres-media-panel {
+    border-bottom: none;
+    border-right: 1px solid var(--border-warm);
+  }
+}
+
+.nosaltres-cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.nosaltres-grid-box:hover .nosaltres-cover-image {
+  transform: scale(1.03);
+}
+
+.nosaltres-marina-card {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--pure-white);
+  padding: 1.5rem;
+  border: 1px solid var(--border-warm);
+  box-shadow: var(--shadow-elevated);
+  max-width: 290px;
+  z-index: 5;
+}
+
+.marina-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-warm);
+}
+
+.marina-card-header .sea-icon {
+  font-size: 1.75rem;
+  color: var(--crimson-red);
+}
+
+.marina-card-header h4 {
+  font-family: var(--font-primary);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--obsidian-black);
+}
+
+.marina-card-text {
+  font-size: 0.86rem;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+.nosaltres-content-panel {
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .nosaltres-content-panel {
+    padding: 4.5rem 3.75rem;
+  }
+}
+
+.slogan-highlight-quote {
+  font-family: var(--font-primary);
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--crimson-red);
+  margin-bottom: 1rem;
+}
+
+.story-lead-paragraph {
+  font-size: 1.08rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.story-lead-paragraph strong {
+  color: var(--obsidian-black);
+  font-weight: 800;
+}
+
+.features-pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.pillar-tile {
+  padding: 1.25rem;
+  background: var(--surface-cream);
+  border: 1px solid var(--border-warm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+}
+
+.pillar-tile:hover {
+  background: var(--surface-tint);
+  border-color: var(--crimson-red);
+  transform: translateY(-2px);
+}
+
+.pillar-icon-box {
+  width: 42px;
+  height: 42px;
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--crimson-red);
+  font-size: 1.35rem;
+}
+
+.pillar-title {
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--obsidian-black);
+}
+
+/* --- SECCIÓ REVIEWS GOOGLE 4.8★ --- */
+.section-reviews-block {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--surface-cream);
+  border-bottom: 1px solid var(--border-warm);
+}
+
+.reviews-inner-box {
+  max-width: 1380px;
+  margin: 0 auto;
+}
+
+.reviews-title-center {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.google-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--pure-white);
+  padding: 0.65rem 1.4rem;
+  border: 1px solid var(--border-warm);
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-xs);
+}
+
+.stars-gold {
+  color: #F59E0B;
+  display: flex;
+  gap: 2px;
+  font-size: 1.15rem;
+}
+
+.reviews-cards-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .reviews-cards-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.testimonial-card {
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--crimson-red);
+  box-shadow: var(--shadow-elevated);
+}
+
+.testimonial-quote {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--charcoal-dark);
+  line-height: 1.65;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.author-meta-block {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  border-top: 1px solid var(--border-warm);
+  padding-top: 1.1rem;
+}
+
+.author-avatar-initials {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-tint);
+  color: var(--crimson-red);
+  font-family: var(--font-primary);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-crimson);
+}
+
+.author-name-text {
+  font-family: var(--font-primary);
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: var(--obsidian-black);
+}
+
+.author-source-text {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+/* --- SECCIÓ TAKE AWAY & COMANDES TELEFÒNIQUES --- */
+.section-takeaway-banner {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--obsidian-black);
+  color: #FFFFFF;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.takeaway-layout-grid {
+  max-width: 1380px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  background: rgba(15, 23, 42, 0.9);
+}
+
+@media (min-width: 992px) {
+  .takeaway-layout-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.takeaway-photo-bg {
+  min-height: 380px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (min-width: 992px) {
+  .takeaway-photo-bg {
+    border-bottom: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+.takeaway-text-body {
+  padding: 3.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .takeaway-text-body {
+    padding: 4.5rem 3.5rem;
+  }
+}
+
+.takeaway-title-main {
+  font-family: var(--font-primary);
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  margin-bottom: 0.75rem;
+}
+
+.red-strip-divider {
+  width: 54px;
+  height: 4px;
+  background: var(--crimson-red);
+  margin-bottom: 1.5rem;
+}
+
+.takeaway-desc-text {
+  font-size: 1.08rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.7;
+  margin-bottom: 2.25rem;
+}
+
+.takeaway-desc-text strong {
+  color: #FFFFFF;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.takeaway-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-phone-call-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--crimson-red);
+  color: #FFFFFF;
+  font-family: var(--font-primary);
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid var(--crimson-red);
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 18px rgba(221, 24, 59, 0.35);
+}
+
+.btn-phone-call-large:hover {
+  background: var(--crimson-hover);
+  transform: translateY(-2px);
+}
+
+/* --- SECCIÓ CONTACTE & MAPA --- */
+.section-location-contact {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--snow-white);
+  border-bottom: 1px solid var(--border-warm);
+}
+
+.location-wrapper-grid {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 992px) {
+  .location-wrapper-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.location-info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.contact-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.contact-detail-card {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-xs);
+}
+
+.contact-icon-frame {
+  width: 48px;
+  height: 48px;
+  background: var(--surface-tint);
+  border: 1px solid var(--border-crimson);
+  color: var(--crimson-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  border-radius: var(--radius-xs);
+}
+
+.contact-detail-card h4 {
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--obsidian-black);
+  margin-bottom: 0.25rem;
+}
+
+.contact-detail-card p {
+  font-size: 0.92rem;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+.map-embed-frame {
+  border: 1px solid var(--border-warm);
+  min-height: 440px;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-cream);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-xs);
+  display: flex;
+  flex-direction: column;
+}
+
+.map-embed-frame iframe {
+  width: 100%;
+  height: 380px;
+  border: 0;
+  display: block;
+}
+
+/* Barra d'accions ràpides i ruta sobre el mapa */
+.map-route-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  padding: 0.95rem 1.25rem;
+  background: #11141B;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.map-parking-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #6EE7B7;
+  letter-spacing: 0.02em;
+}
+
+.map-parking-notice .material-symbols-outlined {
+  font-size: 1.15rem;
+  color: #10B981;
+}
+
+.map-route-buttons-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.btn-route-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: 6px;
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.03em;
+}
+
+.route-btn-gmaps {
+  background: #1A73E8;
+  color: #FFFFFF;
+  border: 1px solid #185ABC;
+}
+
+.route-btn-gmaps:hover {
+  background: #1557B0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.4);
+  color: #FFFFFF;
+}
+
+.route-btn-waze {
+  background: #33CCFF;
+  color: #0F172A;
+  border: 1px solid #20B2E6;
+}
+
+.route-btn-waze:hover {
+  background: #00BFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(51, 204, 255, 0.4);
+  color: #0F172A;
+}
+
+/* --- FOOTER BRAND BOOK --- */
+.brand-footer {
+  background: var(--obsidian-black);
+  color: #FFFFFF;
+  padding: var(--section-gap) var(--gutter) 2.5rem var(--gutter);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-main-grid {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+@media (min-width: 768px) {
+  .footer-main-grid {
+    grid-template-columns: 2fr 1fr 1.25fr;
+  }
+}
+
+.footer-brand-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.footer-logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  align-self: flex-start;
+}
+
+.footer-quote-text {
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--crimson-red);
+}
+
+.footer-bio-text {
+  font-size: 0.94rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+.footer-links-col h4,
+.footer-newsletter-col h4 {
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footer-links-list a {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color var(--transition-fast);
+}
+
+.footer-links-list a:hover {
+  color: var(--crimson-red);
+}
+
+.newsletter-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.newsletter-input-field {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  color: #FFFFFF;
+  outline: none;
+  border-radius: var(--radius-xs);
+}
+
+@media (max-width: 768px) {
+  .newsletter-input-field {
+    font-size: 16px !important;
+  }
+}
+
+.newsletter-input-field:focus {
+  border-color: var(--crimson-red);
+}
+
+.newsletter-submit-btn {
+  padding: 0.85rem 1rem;
+  background: var(--crimson-red);
+  border: 1px solid var(--crimson-red);
+  color: #FFFFFF;
+  font-family: var(--font-primary);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+}
+
+.newsletter-submit-btn:hover {
+  background: var(--crimson-hover);
+}
+
+.footer-bottom-bar {
+  max-width: 1380px;
+  margin: 2rem auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom-bar {
+    flex-direction: row;
+  }
+}
+
+/* --- MODAL DE RESERVA DE TAULA --- */
+.modal-overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 13, 18, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1200;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-dialog-box {
+  background: var(--snow-white);
+  border: 1px solid var(--border-warm);
+  width: 100%;
+  max-width: 540px;
+  padding: 2.25rem 2rem;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 20px;
+  max-height: calc(100vh - 3rem);
+  max-height: calc(100dvh - 3rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  margin: auto 0;
+}
+
+.guest-notice-text {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.45rem;
+  line-height: 1.45;
+  font-style: normal;
+}
+
+.modal-overlay-backdrop.active .modal-dialog-box {
+  transform: scale(1);
+}
+
+.modal-close-icon {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 38px;
+  height: 38px;
+  background: var(--surface-cream);
+  border: 1px solid var(--border-warm);
+  color: var(--obsidian-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close-icon:hover {
+  background: var(--crimson-red);
+  color: #FFFFFF;
+  border-color: var(--crimson-red);
+  transform: rotate(90deg);
+}
+
+.modal-main-heading {
+  font-family: var(--font-primary);
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--obsidian-black);
+  margin-bottom: 0.35rem;
+}
+
+.modal-desc-sub {
+  font-size: 0.92rem;
+  color: var(--text-soft);
+  margin-bottom: 1.5rem;
+}
+
+.reservation-form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.form-inputs-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-input-styled {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--pure-white);
+  border: 1.5px solid var(--border-warm);
+  font-family: var(--font-primary);
+  font-size: 0.92rem;
+  color: var(--obsidian-black);
+  outline: none;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .form-input-styled {
+    font-size: 16px !important;
+  }
+}
+
+.form-input-styled:focus {
+  border-color: var(--crimson-red);
+  box-shadow: 0 0 0 3px rgba(221, 24, 59, 0.12);
+}
+
+/* Selector Tàctil de Comensals */
+.guest-select-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.guest-pills-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.45rem;
+}
+
+.btn-guest-pill {
+  padding: 0.65rem 0.2rem;
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  border-radius: 6px;
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--obsidian-black);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-guest-pill:hover {
+  border-color: #850C1E;
+  color: #850C1E;
+}
+
+.btn-guest-pill.active {
+  background: #850C1E;
+  border-color: #850C1E;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(133, 12, 30, 0.35);
+}
+
+/* Preferència de Zona (Terrassa / Interior) */
+.seating-pills-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.btn-seating-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.7rem 0.85rem;
+  background: var(--pure-white);
+  border: 1px solid var(--border-warm);
+  border-radius: 6px;
+  font-family: var(--font-primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--obsidian-black);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-seating-pill:hover {
+  border-color: #850C1E;
+  color: #850C1E;
+}
+
+.btn-seating-pill.active {
+  background: rgba(133, 12, 30, 0.08);
+  border-color: #850C1E;
+  color: #850C1E;
+  box-shadow: 0 2px 10px rgba(133, 12, 30, 0.12);
+}
+
+/* --- BOTÓ FLOTANT TORNAR A DALT (BACK TO TOP) --- */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  background: rgba(14, 18, 24, 0.92);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 900;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top-btn:hover {
+  background: var(--crimson-red);
+  border-color: var(--crimson-red);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(221, 24, 59, 0.45);
+}
+
+@media (max-width: 768px) {
+  .back-to-top-btn {
+    bottom: max(1.25rem, calc(env(safe-area-inset-bottom) + 0.75rem));
+    right: 1.25rem;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* --- TOAST NOTIFICATION --- */
+.toast-alert-pop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--pure-white);
+  border: 1px solid var(--crimson-red);
+  color: var(--obsidian-black);
+  padding: 1rem 1.5rem;
+  box-shadow: var(--shadow-elevated);
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  transform: translateY(100px);
+  opacity: 0;
+  border-radius: var(--radius-sm);
+  transition: all 0.35s var(--transition-smooth);
+}
+
+.toast-alert-pop.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast-icon-check {
+  color: var(--crimson-red);
+  font-size: 1.35rem;
+}
+
+.toast-text-msg {
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   NOVA CAPÇALERA FLOTANT BRAND BOOK (DISSENY CÀPSULA LUXURY DARK GLASS)
+   ========================================================================== */
+.floating-capsule-navbar {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1280px, calc(100% - 32px));
+  height: 68px;
+  background: rgba(14, 18, 24, 0.82);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1.5px solid rgba(229, 200, 144, 0.4);
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 0 24px rgba(133, 12, 30, 0.18);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.85rem 0 1.25rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-sizing: border-box;
+}
+
+.floating-capsule-navbar.scrolled {
+  background: rgba(10, 13, 18, 0.94);
+  border-color: rgba(133, 12, 30, 0.35);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 30px rgba(133, 12, 30, 0.25);
+}
+
+/* Brand Identity */
+.capsule-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.capsule-logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.capsule-brand:hover .capsule-logo-img {
+  transform: scale(1.05);
+}
+
+.capsule-brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.capsule-brand-name {
+  font-family: var(--font-primary);
+  font-size: 1.38rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+}
+
+.capsule-brand-sub {
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: #E5C890;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 2px;
+  text-shadow: 0 0 10px rgba(229, 200, 144, 0.35);
+  white-space: nowrap;
+}
+
+/* Links Centrals */
+.capsule-nav-links {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 800px) {
+  .capsule-nav-links {
+    display: flex;
+  }
+}
+
+@media (min-width: 1100px) {
+  .capsule-nav-links {
+    gap: 2.25rem;
+  }
+}
+
+.capsule-nav-link {
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E2E8F0;
+  text-decoration: none;
+  position: relative;
+  padding: 0.35rem 0;
+  transition: color 0.2s ease;
+}
+
+.capsule-nav-link:hover,
+.capsule-nav-link.active {
+  color: #DD183B;
+  text-shadow: 0 0 12px rgba(221, 24, 59, 0.5);
+}
+
+.capsule-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #850C1E, #DD183B);
+  box-shadow: 0 0 8px rgba(221, 24, 59, 0.5);
+  transition: width 0.25s ease;
+}
+
+/* Accions Dreta: Delivery + Telèfon + Botó Reserva + Toggle */
+.capsule-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Botons de Delivery al Navbar */
+.capsule-delivery-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-delivery-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  color: #F1F5F9;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.btn-delivery-nav .delivery-name {
+  display: none;
+}
+
+.btn-delivery-nav .delivery-icon {
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.btn-delivery-nav:hover .delivery-icon {
+  transform: scale(1.12);
+}
+
+.btn-delivery-nav.btn-glovo:hover {
+  background: rgba(255, 194, 68, 0.2);
+  border-color: #FFC244;
+  color: #FFC244;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255, 194, 68, 0.35);
+}
+
+.btn-delivery-nav.btn-uber:hover {
+  background: rgba(6, 193, 103, 0.2);
+  border-color: #06C167;
+  color: #06C167;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(6, 193, 103, 0.35);
+}
+
+.capsule-phone-widget {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+@media (min-width: 900px) {
+  .capsule-phone-widget {
+    display: flex;
+  }
+}
+
+.capsule-phone-icon-box {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E5C890;
+  background: rgba(229, 200, 144, 0.08);
+  border: 1px solid rgba(229, 200, 144, 0.25);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.capsule-phone-widget:hover .capsule-phone-icon-box {
+  background: rgba(133, 12, 30, 0.35);
+  border-color: #E5C890;
+  color: #FFFFFF;
+}
+
+.capsule-phone-text-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.capsule-phone-label {
+  display: none;
+}
+
+.capsule-phone-number {
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.capsule-phone-widget:hover .capsule-phone-number {
+  color: #E5C890;
+}
+
+/* Botó Píndola Reservar Taula */
+.capsule-btn-booking {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #850C1E 0%, #630514 100%);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 0.52rem 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(133, 12, 30, 0.35);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.capsule-btn-booking:hover {
+  background: linear-gradient(135deg, #9E0B25 0%, #750819 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(133, 12, 30, 0.5);
+}
+
+.capsule-btn-booking-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.capsule-btn-booking-text {
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  align-items: center;
+  line-height: 1;
+}
+
+.capsule-btn-booking-line1,
+.capsule-btn-booking-line2 {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* Hamburguesa Mòbil per a la càpsula */
+.capsule-mobile-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+@media (min-width: 800px) {
+  .capsule-mobile-toggle {
+    display: none;
+  }
+}
+
+.capsule-mobile-toggle span {
+  display: block;
+  width: 22px;
+  height: 2.2px;
+  background: #FFFFFF;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.capsule-mobile-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.capsule-mobile-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.capsule-mobile-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Menú desplegable flotant mòbil */
+.capsule-mobile-dropdown {
+  position: fixed;
+  top: 94px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1280px, calc(100% - 32px));
+  background: rgba(32, 40, 54, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 2px solid rgba(221, 24, 59, 0.7);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+  padding: 1.5rem;
+  z-index: 999;
+  display: none;
+  max-height: calc(100vh - 110px);
+  max-height: calc(100dvh - 110px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.capsule-mobile-dropdown.open {
+  display: block;
+  animation: slideDownCapsule 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideDownCapsule {
+  from { opacity: 0; transform: translate(-50%, -10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ==========================================================================
+   RESPONSIVE ESPECÍFIC DE LA NAVBAR FLOTANT EN MÒBILS I TABLETS
+   ========================================================================== */
+@media (max-width: 768px) {
+  .floating-capsule-navbar {
+    top: 12px;
+    width: calc(100% - 20px);
+    height: 60px;
+    padding: 0 0.55rem 0 0.75rem;
+  }
+
+  .capsule-brand {
+    gap: 0.6rem;
+  }
+
+  .capsule-logo-img {
+    height: 38px;
+  }
+
+  .capsule-brand-name {
+    font-size: 1.15rem;
+  }
+
+  .capsule-brand-sub {
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+  }
+
+  .capsule-right-actions {
+    gap: 0.45rem;
+  }
+
+  .capsule-delivery-group {
+    display: none; /* Els botons de Glovo i Uber Eats es mostren amb total claredat dins del menú desplegable mòbil */
+  }
+
+  .capsule-btn-booking {
+    padding: 0.45rem 0.85rem;
+    gap: 0.35rem;
+  }
+
+  .capsule-btn-booking-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .capsule-btn-booking-line1,
+  .capsule-btn-booking-line2 {
+    font-size: 0.65rem;
+  }
+
+  .capsule-mobile-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .capsule-mobile-dropdown {
+    top: 78px;
+    width: calc(100% - 20px);
+    padding: 1.25rem 1rem;
+    padding-bottom: max(1.25rem, calc(env(safe-area-inset-bottom) + 0.85rem));
+    max-height: calc(100dvh - 90px);
+  }
+}
+
+@media (max-width: 420px) {
+  .floating-capsule-navbar {
+    height: 56px;
+    padding: 0 0.45rem 0 0.65rem;
+  }
+
+  .capsule-logo-img {
+    height: 34px;
+  }
+
+  .capsule-brand-name {
+    font-size: 1.05rem;
+  }
+
+  .capsule-brand-sub {
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .capsule-btn-booking {
+    padding: 0.42rem 0.65rem;
+  }
+
+  .capsule-btn-booking-line1 {
+    font-size: 0.62rem;
+  }
+
+  .capsule-btn-booking-line2 {
+    font-size: 0.62rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .capsule-brand-sub {
+    display: none;
+  }
+  
+  .capsule-btn-booking-line2 {
+    display: none;
+  }
+}
+
+/* Ajustos específics per a Tablets (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .floating-capsule-navbar {
+    height: 64px;
+    padding: 0 0.85rem 0 1rem;
+    width: calc(100% - 28px);
+  }
+  .capsule-brand-name {
+    font-size: 1.25rem;
+  }
+  .capsule-right-actions {
+    gap: 0.65rem;
+  }
+  .capsule-phone-widget {
+    display: none; /* Mantenim net l'espai per a Delivery + Reserva */
+  }
+  .capsule-btn-booking {
+    padding: 0.5rem 1.1rem;
+    gap: 0.45rem;
+  }
+}
+
+.capsule-mobile-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.capsule-mobile-item-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0;
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #F8FAFC;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.capsule-mobile-item-link:hover {
+  color: #FF244D;
+  padding-left: 0.5rem;
+}
+
+/* Secció Delivery al Menú Mòbil */
+.capsule-mobile-delivery-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1rem 0;
+  margin-bottom: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-delivery-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94A3B8;
+}
+
+.mobile-delivery-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.btn-delivery-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-family: var(--font-primary);
+  font-size: 0.86rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-delivery-mobile.btn-glovo {
+  border-color: rgba(255, 194, 68, 0.4);
+}
+.btn-delivery-mobile.btn-glovo:hover {
+  background: rgba(255, 194, 68, 0.2);
+  color: #FFC244;
+}
+
+.btn-delivery-mobile.btn-uber {
+  border-color: rgba(6, 193, 103, 0.4);
+}
+.btn-delivery-mobile.btn-uber:hover {
+  background: rgba(6, 193, 103, 0.2);
+  color: #06C167;
+}
+
+/* ==========================================================================
+   SECCIÓ ELS NOSTRES IMPRESCINDIBLES (BEST SELLERS DE JOHN'S GROBE)
+   ========================================================================== */
+.section-bestsellers {
+  padding: 6rem var(--gutter) 5rem;
+  background: #FFFFFF;
+  position: relative;
+  border-top: 1px solid var(--border-warm);
+  overflow-x: clip;
+}
+
+.bestsellers-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 3.5rem;
+}
+
+.bestsellers-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-primary);
+  font-size: 0.74rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #850C1E;
+  background: rgba(133, 12, 30, 0.06);
+  border: 1px solid rgba(133, 12, 30, 0.22);
+  border-left: 3px solid #850C1E;
+  padding: 0.38rem 1.1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(133, 12, 30, 0.05);
+}
+
+.bestsellers-tag .noble-symbol {
+  color: #B8102E;
+  font-size: 0.72rem;
+}
+
+.bestsellers-title {
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  font-weight: 900;
+  color: var(--obsidian-black);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.bestsellers-desc {
+  font-size: 1.05rem;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+/* Graella de les 4 referències clau */
+.bestsellers-grid {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.bestsellers-grid .dish-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bestsellers-grid .dish-card-media {
+  height: 210px;
+}
+
+.bestsellers-grid .dish-card-body {
+  padding: 1.35rem 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bestsellers-grid .dish-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.bestsellers-grid .dish-title {
+  font-size: 1.15rem;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.bestsellers-grid .dish-price-tag {
+  font-size: 1.2rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.bestsellers-grid .dish-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.bestsellers-grid .dish-ingredients-row {
+  margin-top: auto;
+  margin-bottom: 0.65rem;
+}
+
+@media (max-width: 768px) {
+  .section-bestsellers {
+    overflow-x: clip;
+  }
+
+  .bestsellers-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.15rem;
+    padding: 0.5rem var(--gutter) 1.5rem;
+    margin-left: calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .bestsellers-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bestsellers-grid .dish-card,
+  .bestsellers-grid .bestseller-card {
+    flex: 0 0 84%;
+    max-width: 320px;
+    scroll-snap-align: center;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  .bestsellers-grid .dish-card-media {
+    height: 190px;
+  }
+
+  .bestsellers-grid .dish-badge-flag {
+    top: 8px;
+    left: 8px;
+    font-size: 0.58rem;
+    padding: 0.22rem 0.52rem;
+  }
+
+  .bestsellers-grid .dish-title {
+    font-size: 1.12rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1079px) {
+  .bestsellers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1080px) and (max-width: 1279px) {
+  .bestsellers-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .bestsellers-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.bestseller-card {
+  background: #FFFDF9;
+  border: 1px solid var(--border-warm);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  position: relative;
+}
+
+.bestseller-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(133, 12, 30, 0.3);
+  box-shadow: 0 16px 36px rgba(133, 12, 30, 0.1);
+}
+
+.bestseller-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--surface-cream);
+}
+
+.bestseller-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.bestseller-card:hover .bestseller-img {
+  transform: scale(1.06);
+}
+
+/* --- BADGE GASTRONÒMIC NOBLE (BISTRO BORGOÑA & ORO CHAMPAGNE) --- */
+.bestseller-gold-badge,
+.bestseller-bistro-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(135deg, rgba(120, 16, 30, 0.94) 0%, rgba(75, 10, 20, 0.96) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(229, 200, 144, 0.45);
+  color: #F8F3E8;
+  font-family: var(--font-primary, 'Nunito Sans', sans-serif);
+  font-size: 0.64rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.36rem 0.8rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.bestseller-gold-badge .glyph,
+.bestseller-bistro-badge .glyph {
+  display: none;
+}
+
+.bestseller-category-tag {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  background: rgba(12, 16, 22, 0.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #CBD5E1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-primary);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.6rem;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.bestseller-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.bestseller-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.bestseller-dish-name {
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--obsidian-black);
+  line-height: 1.2;
+}
+
+.bestseller-price {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #850C1E;
+  white-space: nowrap;
+}
+
+.bestseller-desc-text {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+  flex: 1;
+}
+
+.bestseller-ingredients-line {
+  font-family: var(--font-secondary, 'Lora', serif);
+  font-size: 0.86rem;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.bestseller-ingredients-line .sep {
+  color: rgba(133, 12, 30, 0.45);
+  margin: 0 0.35rem;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.bestseller-card-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.bestseller-bread-option {
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #850C1E;
+  background: rgba(133, 12, 30, 0.06);
+  border: 1px solid rgba(133, 12, 30, 0.18);
+  border-radius: 4px;
+  padding: 0.28rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  letter-spacing: 0.02em;
+  width: fit-content;
+}
+
+.bestseller-bread-option .bread-glyph {
+  color: #B8102E;
+  font-size: 0.7rem;
+}
+
+.bestseller-bread-option.dish-nature-badge {
+  color: #047857;
+  background: rgba(4, 120, 87, 0.06);
+  border-color: rgba(4, 120, 87, 0.2);
+}
+.bestseller-bread-option.dish-nature-badge .bread-glyph {
+  color: #059669;
+}
+
+.bestseller-view-btn {
+  font-family: var(--font-primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #850C1E;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  text-decoration: none;
+  transition: gap 0.2s ease, color 0.2s ease;
+  align-self: flex-end;
+}
+
+.bestseller-view-btn:hover {
+  color: #B8102E;
+  gap: 0.5rem;
+}
+
+.bestseller-view-btn:hover {
+  gap: 0.45rem;
+}
+
+/* Banner Destacat cap a la Carta Completa */
+.bestsellers-cta-banner {
+  max-width: 1380px;
+  margin: 3.5rem auto 0;
+  background: radial-gradient(circle at 85% 50%, rgba(133, 12, 30, 0.12) 0%, rgba(250, 243, 238, 1) 70%);
+  border: 1.5px solid rgba(133, 12, 30, 0.2);
+  border-radius: 24px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+@media (min-width: 992px) {
+  .bestsellers-cta-banner {
+    flex-direction: row;
+    text-align: left;
+    padding: 2.5rem 3.5rem;
+  }
+}
+
+.cta-banner-text-side h3 {
+  font-family: var(--font-primary);
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 900;
+  color: var(--obsidian-black);
+  margin-bottom: 0.5rem;
+}
+
+.cta-banner-text-side p {
+  font-size: 1rem;
+  color: var(--text-soft);
+  max-width: 680px;
+}
+
+.cta-banner-action-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.btn-cta-full-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #850C1E;
+  color: #ffffff;
+  font-family: var(--font-primary);
+  font-size: 0.92rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.95rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(133, 12, 30, 0.28);
+  transition: all 0.25s ease;
+}
+
+.btn-cta-full-menu:hover {
+  background: #9E0B25;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(133, 12, 30, 0.38);
+}
+
+.cta-gluten-pill {
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #850C1E;
+  background: rgba(133, 12, 30, 0.06);
+  border: 1px solid rgba(133, 12, 30, 0.2);
+  border-radius: 4px;
+  padding: 0.35rem 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cta-gluten-pill .glyph {
+  color: #B8102E;
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   PÀGINA DEDICADA DE LA CARTA (carta.html)
+   ========================================================================== */
+.page-menu-hero {
+  padding: 130px var(--gutter) 3.5rem;
+  background: radial-gradient(circle at 50% 30%, rgba(133, 12, 30, 0.06) 0%, rgba(255, 249, 246, 1) 75%);
+  text-align: center;
+  border-bottom: 1px solid var(--border-warm);
+}
+
+.page-menu-hero-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.page-menu-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-primary);
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #850C1E;
+  background: rgba(133, 12, 30, 0.04);
+  border: 1px solid rgba(133, 12, 30, 0.2);
+  border-radius: 2px;
+  padding: 0.45rem 1.1rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 4px rgba(133, 12, 30, 0.04);
+}
+
+.editorial-sep {
+  color: rgba(133, 12, 30, 0.4);
+  font-weight: 400;
+}
+
+.page-menu-title {
+  font-family: var(--font-primary);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  color: var(--obsidian-black);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.page-menu-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+.page-menu-main {
+  padding: 3.5rem var(--gutter) 6rem;
+  max-width: 1420px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   RESPONSIVE ESPECÍFIC DE LA PÀGINA DE CARTA (carta.html) I COMPONENTS
+   ========================================================================== */
+@media (max-width: 768px) {
+  .page-menu-hero {
+    padding: 88px var(--gutter) 2rem;
+  }
+
+  .page-menu-tag {
+    font-size: 0.68rem;
+    padding: 0.35rem 0.75rem;
+    gap: 0.45rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.85rem;
+  }
+
+  .page-menu-title {
+    font-size: 2.15rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .page-menu-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .page-menu-main {
+    padding: 1.5rem var(--gutter) 4rem;
+  }
+
+  .allergy-gluten-banner {
+    padding: 1rem 1.15rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .allergy-editorial-note {
+    font-size: 0.64rem;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.65rem;
+    white-space: normal;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    max-width: 100%;
+    box-sizing: border-box;
+    line-height: 1.35;
+    gap: 0.35rem;
+  }
+
+  /* Contenidor Sticky per a Mòbils amb Indicador de Degradat lateral (Fade Cue) */
+  .menu-tabs-sticky-wrapper {
+    position: sticky;
+    top: 66px;
+    z-index: 40;
+    margin-bottom: 1.25rem;
+  }
+
+  .menu-tabs-sticky-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 38px;
+    background: linear-gradient(to right, rgba(255, 249, 246, 0) 0%, rgba(255, 249, 246, 0.96) 80%);
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Pestanyes de categoria amb scroll horitzontal tàctil i scroll-snap */
+  .menu-tabs-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    gap: 0.55rem;
+    padding: 0.65rem 0.95rem;
+    margin-bottom: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    border-radius: 16px;
+    background: rgba(255, 249, 246, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .menu-tabs-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu-tab-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 0.65rem 1.15rem;
+    font-size: 0.82rem;
+    min-height: 42px;
+    touch-action: manipulation;
+  }
+
+  /* Prevenir Auto-Zoom d'iOS Safari a iPhone (Inputs i Selects mínim 16px) */
+  .search-box-field input {
+    font-size: 16px !important;
+  }
+
+  .menu-sort-select {
+    font-size: 16px !important;
+  }
+
+  .btn-clear-search {
+    min-width: 42px;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+  }
+
+  .menu-search-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .search-and-sort-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    width: 100%;
+  }
+
+  .search-box-field {
+    width: 100%;
+    max-width: 100%;
+    flex: none;
+  }
+
+  .sort-selector-wrapper {
+    width: 100%;
+    justify-content: space-between;
+    flex: none;
+    height: 44px;
+    min-height: 44px;
+  }
+
+  .menu-sort-select {
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+
+  .view-mode-toggle {
+    display: inline-flex; /* Visible només en mòbil i tauleta */
+  }
+
+  /* ==========================================================================
+     MODES DE VISTA MÒBIL: 1 COLUMNA (ORIGINAL) vs 2 COLUMNES (BENTO COMPACTE)
+     ========================================================================== */
+
+  /* VISTA A 1 COLUMNA (Tradicional / Detallada com abans) */
+  .products-cards-grid.view-single-mode {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .products-cards-grid.view-single-mode .dish-card {
+    border-radius: 16px;
+  }
+
+  .products-cards-grid.view-single-mode .dish-card-media {
+    height: 200px;
+  }
+
+  .products-cards-grid.view-single-mode .dish-badge-flag {
+    top: 10px;
+    left: 10px;
+    font-size: 0.64rem;
+    padding: 0.35rem 0.75rem;
+    max-width: none;
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  .products-cards-grid.view-single-mode .dish-card-body {
+    padding: 1.25rem;
+  }
+
+  .products-cards-grid.view-single-mode .dish-card-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .products-cards-grid.view-single-mode .dish-title {
+    font-size: 1.2rem;
+    min-height: auto;
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+  }
+
+  .products-cards-grid.view-single-mode .dish-price-tag {
+    font-size: 1.25rem;
+  }
+
+  .products-cards-grid.view-single-mode .dish-description {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 1.15rem;
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+  }
+
+  .products-cards-grid.view-single-mode .dish-ingredients-row {
+    max-height: none;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .products-cards-grid.view-single-mode .ingredient-badge {
+    font-size: 0.74rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .products-cards-grid.view-single-mode .dish-celiac-badge {
+    font-size: 0.72rem;
+    padding: 0.32rem 0.68rem;
+    max-width: none;
+  }
+
+  .products-cards-grid.view-single-mode .dish-card-tap-cue {
+    display: none;
+  }
+
+  /* VISTA A 2 COLUMNES (Bento Compact / Sense ser gegant) */
+  .products-cards-grid.view-grid-mode,
+  .products-cards-grid:not(.view-single-mode) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-card,
+  .products-cards-grid:not(.view-single-mode) .dish-card {
+    border-radius: 12px;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.16s ease, box-shadow 0.16s ease;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-card:active,
+  .products-cards-grid:not(.view-single-mode) .dish-card:active {
+    transform: scale(0.97);
+  }
+
+  .products-cards-grid.view-grid-mode .dish-card-media,
+  .products-cards-grid:not(.view-single-mode) .dish-card-media {
+    height: 115px;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-badge-flag,
+  .products-cards-grid:not(.view-single-mode) .dish-badge-flag {
+    top: 6px;
+    left: 6px;
+    font-size: 0.52rem;
+    padding: 0.18rem 0.42rem;
+    letter-spacing: 0.04em;
+    max-width: calc(100% - 12px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-card-body,
+  .products-cards-grid:not(.view-single-mode) .dish-card-body {
+    padding: 0.65rem 0.55rem 0.75rem;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-card-category-indicator,
+  .products-cards-grid:not(.view-single-mode) .dish-card-category-indicator {
+    font-size: 0.58rem;
+    margin-bottom: 0.22rem;
+    gap: 0.25rem;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-card-header,
+  .products-cards-grid:not(.view-single-mode) .dish-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.12rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-title,
+  .products-cards-grid:not(.view-single-mode) .dish-title {
+    font-size: 0.85rem;
+    line-height: 1.25;
+    font-weight: 800;
+    min-height: 2.5em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-price-tag,
+  .products-cards-grid:not(.view-single-mode) .dish-price-tag {
+    font-size: 1.05rem;
+    font-weight: 900;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-description,
+  .products-cards-grid:not(.view-single-mode) .dish-description {
+    font-size: 0.72rem;
+    line-height: 1.35;
+    margin-bottom: 0.38rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-ingredients-row,
+  .products-cards-grid:not(.view-single-mode) .dish-ingredients-row {
+    gap: 0.22rem;
+    margin-bottom: 0.35rem;
+    max-height: 22px;
+    overflow: hidden;
+  }
+
+  .products-cards-grid.view-grid-mode .ingredient-badge,
+  .products-cards-grid:not(.view-single-mode) .ingredient-badge {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-celiac-badge,
+  .products-cards-grid:not(.view-single-mode) .dish-celiac-badge {
+    font-size: 0.56rem;
+    padding: 0.16rem 0.38rem;
+    margin-top: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  /* Divisors de categoria a 2 columnes mòbil */
+  .menu-category-section-divider {
+    padding: 0.85rem 1rem;
+    gap: 0.75rem;
+    border-radius: 12px;
+    margin-top: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .category-divider-numeral {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+    border-radius: 8px;
+  }
+
+  .category-divider-title {
+    font-size: 1.15rem;
+  }
+
+  .category-divider-subtitle {
+    font-size: 0.78rem;
+  }
+
+  /* Banner Take Away en mòbil */
+  .takeaway-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .takeaway-photo-bg {
+    min-height: 220px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .takeaway-text-body {
+    padding: 2rem 1.25rem;
+  }
+
+  .takeaway-title-main {
+    font-size: 1.85rem;
+  }
+
+  .takeaway-desc-text {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .takeaway-actions-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .takeaway-actions-row a,
+  .takeaway-actions-row button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 0.85rem 1.25rem;
+  }
+
+  /* Modal de reserves en mòbil */
+  .modal-overlay-backdrop {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .modal-dialog-box {
+    padding: 1.5rem 1.15rem 1.25rem;
+    max-width: 100%;
+    border-radius: 16px;
+    max-height: calc(100vh - 1.5rem);
+    max-height: calc(100dvh - 1.5rem);
+  }
+
+  .modal-main-heading {
+    font-size: 1.45rem;
+  }
+
+  .modal-desc-sub {
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .form-inputs-pair {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .toast-alert-pop {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    width: auto;
+    padding: 0.85rem 1.15rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Micro-ajustaments per a pantalles estretes de telèfon (<= 480px com Samsung Galaxy A56 / iPhone) */
+@media (max-width: 480px) {
+  /* Selector de vista en pantalla estreta */
+  .view-mode-toggle {
+    padding: 2px;
+    gap: 2px;
+  }
+
+  .btn-view-toggle {
+    width: 30px;
+    height: 28px;
+    padding: 0;
+  }
+
+  .btn-view-toggle .material-symbols-outlined {
+    font-size: 1.05rem;
+  }
+
+  .allergy-editorial-note {
+    font-size: 0.6rem;
+    letter-spacing: 0.03em;
+    padding: 0.3rem 0.5rem;
+    gap: 0.25rem;
+  }
+
+  /* 1 Columna en mòbil estret */
+  .products-cards-grid.view-single-mode {
+    gap: 1.25rem;
+  }
+
+  .products-cards-grid.view-single-mode .dish-card-media {
+    height: 185px;
+  }
+
+  .products-cards-grid.view-single-mode .dish-title {
+    font-size: 1.1rem;
+  }
+
+  .products-cards-grid.view-single-mode .dish-price-tag {
+    font-size: 1.15rem;
+  }
+
+  /* 2 Columnes en mòbil estret */
+  .products-cards-grid.view-grid-mode,
+  .products-cards-grid:not(.view-single-mode) {
+    gap: 0.45rem;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-card-media,
+  .products-cards-grid:not(.view-single-mode) .dish-card-media {
+    height: 108px;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-card-body,
+  .products-cards-grid:not(.view-single-mode) .dish-card-body {
+    padding: 0.58rem 0.48rem 0.68rem;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-title,
+  .products-cards-grid:not(.view-single-mode) .dish-title {
+    font-size: 0.82rem;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-price-tag,
+  .products-cards-grid:not(.view-single-mode) .dish-price-tag {
+    font-size: 0.98rem;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-description,
+  .products-cards-grid:not(.view-single-mode) .dish-description {
+    font-size: 0.68rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .products-cards-grid.view-grid-mode .ingredient-badge,
+  .products-cards-grid:not(.view-single-mode) .ingredient-badge {
+    font-size: 0.56rem;
+    padding: 0.08rem 0.3rem;
+  }
+
+  .products-cards-grid.view-grid-mode .dish-celiac-badge,
+  .products-cards-grid:not(.view-single-mode) .dish-celiac-badge {
+    font-size: 0.52rem;
+    padding: 0.12rem 0.3rem;
+  }
+
+  /* Bottom sheet compacte en pantalla estreta (Opció 1 + Opció 4) */
+  .dish-sheet-hero-media {
+    height: 180px;
+    max-height: 28vh;
+  }
+
+  .dish-sheet-main-info {
+    padding: 0.7rem 0.85rem 0.85rem;
+    gap: 0.4rem;
+  }
+
+  .dish-sheet-name {
+    font-size: 1rem;
+  }
+
+  .dish-sheet-price-tag {
+    font-size: 1.1rem;
+  }
+
+  .btn-sheet-call-takeaway {
+    height: 38px;
+    padding: 0 0.65rem;
+    font-size: 0.70rem;
+    gap: 0.25rem;
+  }
+
+  .btn-sheet-delivery-icon {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* ==========================================================================
+   PÀGINA DE LA HISTÒRIA (HISTÒRIA & TRAJECTÒRIA 2006 - JOHN'S GROBE)
+   ========================================================================== */
+
+.page-history-body {
+  background-color: #0A0D12;
+  color: #F1F5F9;
+  overflow-x: hidden;
+}
+
+/* Correcció de contrast crític per a títols en mode fosc / mòbils (PAS 1) */
+.page-history-body .section-title-bold {
+  color: #FFFFFF;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.page-history-body .comparison-desc-text,
+.page-history-body .timeline-intro-text {
+  color: #CBD5E1;
+}
+
+/* --- 1. HERO DE LA HISTÒRIA --- */
+.history-hero-section {
+  position: relative;
+  padding-top: 140px;
+  padding-bottom: 4rem;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 20%, rgba(221, 24, 59, 0.12) 0%, rgba(10, 13, 18, 1) 75%);
+}
+
+.history-hero-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.history-hero-glow {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 350px;
+  background: radial-gradient(ellipse, rgba(255, 36, 77, 0.15) 0%, transparent 70%);
+  filter: blur(50px);
+}
+
+.history-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.history-hero-title {
+  font-family: var(--font-primary);
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin: 1.25rem 0 1rem;
+  max-width: 900px;
+}
+
+.history-title-highlight {
+  background: linear-gradient(135deg, #DD183B 0%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.history-hero-subtitle {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.65;
+  color: #94A3B8;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+
+/* Stats Cards de Tradició */
+.history-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 1080px;
+}
+
+.history-stat-card {
+  background: rgba(20, 24, 32, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.history-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(221, 24, 59, 0.4);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5), 0 0 24px rgba(221, 24, 59, 0.15);
+}
+
+.history-stat-number {
+  font-family: var(--font-primary);
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.history-stat-label {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #FF4D6D;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+}
+
+.history-stat-desc {
+  font-size: 0.78rem;
+  color: #94A3B8;
+  line-height: 1.35;
+}
+
+/* --- 2. COMPARADOR INTERACTIU 'ABANS & ARA' --- */
+.history-comparison-section {
+  padding: 5rem 0;
+  background: #0D1016;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.comparison-inner-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.comparison-header-center {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+}
+
+.comparison-desc-text {
+  color: #94A3B8;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
+.before-after-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 580px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(221, 24, 59, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  user-select: none;
+  cursor: ew-resize;
+  touch-action: pan-y; /* Permet el desplaçament vertical suau a mòbils */
+}
+
+.ba-image-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ba-after-layer {
+  z-index: 1;
+}
+
+.ba-before-layer {
+  z-index: 2;
+  width: 50%; /* Controlat dinàmicament per JS */
+  border-right: 2px solid #FFFFFF;
+}
+
+.ba-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Forçar que la imatge de l'obrador conservi l'escala completa dins del contenidor */
+.ba-before-layer .ba-img {
+  width: 1100px;
+  max-width: 1100px;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1150px) {
+  .ba-before-layer .ba-img {
+    width: 100vw;
+    max-width: 100vw;
+  }
+}
+
+.ba-badge-pill {
+  position: absolute;
+  bottom: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 5;
+}
+
+.ba-badge-before {
+  left: 1.25rem;
+  background: rgba(20, 16, 14, 0.85);
+  color: #F8E7D8;
+  border: 1px solid rgba(220, 180, 140, 0.4);
+}
+
+.ba-badge-after {
+  right: 1.25rem;
+  background: rgba(14, 20, 30, 0.85);
+  color: #7DD3FC;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+/* Manejador lliscant */
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 48px;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.ba-handle-line {
+  flex: 1;
+  width: 2px;
+  background: #FFFFFF;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.ba-handle-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #E61B40;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), 0 0 15px rgba(230, 27, 64, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  pointer-events: auto;
+  cursor: ew-resize;
+  touch-action: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.ba-handle-circle:hover {
+  transform: scale(1.1);
+  background: #FF244D;
+}
+
+.comparison-legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #94A3B8;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-dot-vintage {
+  background: #D97706;
+  box-shadow: 0 0 8px rgba(217, 119, 6, 0.6);
+}
+
+.legend-dot-modern {
+  background: #0284C7;
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.6);
+}
+
+/* --- 3. LÍNIA DE TEMPS GASTRONÒMICA --- */
+.history-timeline-section {
+  padding: 6rem 0;
+  background: #0A0D12;
+  position: relative;
+}
+
+.timeline-inner-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.timeline-header-center {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+}
+
+.timeline-intro-text {
+  color: #94A3B8;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
+.timeline-track-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.timeline-center-rail {
+  position: absolute;
+  top: 2rem;
+  bottom: 2rem;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(221, 24, 59, 0.8) 0%, rgba(221, 24, 59, 0.2) 100%);
+  box-shadow: 0 0 12px rgba(221, 24, 59, 0.3);
+}
+
+.timeline-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #141922;
+  border: 2px solid #E61B40;
+  box-shadow: 0 0 20px rgba(221, 24, 59, 0.4), inset 0 0 10px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-year {
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+}
+
+.timeline-card {
+  width: calc(50% - 50px);
+  background: linear-gradient(135deg, rgba(24, 28, 38, 0.9) 0%, rgba(14, 18, 25, 0.95) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 1.85rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  transition: all 0.35s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(221, 24, 59, 0.45);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(221, 24, 59, 0.2);
+}
+
+.timeline-left {
+  justify-content: flex-start;
+}
+
+.timeline-right {
+  justify-content: flex-end;
+}
+
+.timeline-card-accent {
+  border-color: rgba(255, 77, 109, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(221, 24, 59, 0.18);
+}
+
+.timeline-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.timeline-icon {
+  color: #E5C890;
+  font-size: 1.35rem;
+}
+
+.timeline-epoch-badge {
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #94A3B8;
+  text-transform: uppercase;
+}
+
+.timeline-milestone-title {
+  font-family: var(--font-primary);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.timeline-milestone-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #CBD5E1;
+  margin-bottom: 1.25rem;
+}
+
+.timeline-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.timeline-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #E2E8F0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+}
+
+/* --- 4. PILARS DE LA FILOSOFIA --- */
+.history-pillars-section {
+  padding: 5rem 0;
+  background: #0E1218;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pillars-inner-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.pillars-title-center {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 3rem;
+}
+
+.pillars-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.pillar-feature-card {
+  background: rgba(22, 27, 36, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem 1.65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+
+.pillar-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(221, 24, 59, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.pillar-feature-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(230, 27, 64, 0.25) 0%, rgba(184, 16, 46, 0.35) 100%);
+  border: 1px solid rgba(255, 36, 77, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FF4D6D;
+  margin-bottom: 1.25rem;
+}
+
+.pillar-feature-icon-box .material-symbols-outlined {
+  font-size: 1.75rem;
+}
+
+.pillar-feature-title {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.65rem;
+}
+
+.pillar-feature-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #94A3B8;
+}
+
+/* --- 5. BANNER CTA DE CONVERSIÓ HISTÒRIA --- */
+.history-cta-section {
+  padding: 5rem 0 6rem;
+  background: #0A0D12;
+}
+
+.history-cta-box {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.history-cta-content {
+  background: linear-gradient(135deg, rgba(32, 22, 28, 0.95) 0%, rgba(18, 20, 26, 0.98) 100%);
+  border: 1px solid rgba(221, 24, 59, 0.45);
+  border-radius: 24px;
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 50px rgba(221, 24, 59, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.history-cta-tag {
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #FF4D6D;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.history-cta-title {
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.history-cta-p {
+  color: #CBD5E1;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.history-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Responsive per a la pàgina de la història */
+@media (max-width: 991px) {
+  .history-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .timeline-center-rail {
+    left: 28px;
+  }
+
+  .timeline-marker {
+    left: 28px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .timeline-card {
+    width: calc(100% - 65px);
+    margin-left: 65px;
+  }
+
+  .timeline-left,
+  .timeline-right {
+    justify-content: flex-start;
+  }
+
+  .pillars-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .history-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .before-after-wrapper {
+    aspect-ratio: 4 / 3;
+  }
+
+  .ba-badge-pill {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.7rem;
+  }
+}
+
+/* ==========================================================================
+   ANIMACIÓ SUAU DE SCROLL PER A TÍTOLS I TEXTOS (CINEMATIC FADE-UP)
+   ========================================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+

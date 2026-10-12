@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@layer components {
+  /*  EL BOTÓN PRINCIPAL (Rojo) */
+  .btn-primario {
+    @apply w-full bg-[#D21F3C] hover:bg-[#A81930] text-white font-bold rounded-xl p-3 transition-colors shadow-lg active:scale-95;
+  }
+
+  /* EL BOTÓN SECUNDARIO (Azul para edición) */
+  .btn-secundario {
+    @apply w-full bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl p-3 transition-colors shadow-lg active:scale-95;
+  }
+
+  /* LOS INPUTS DE TEXTO (Oscuros) */
+  .input-grobe {
+    @apply w-full bg-[#1a1a1a] border border-white/10 rounded-xl p-3 focus:border-[#D21F3C] outline-none text-white transition-colors appearance-none;
+  }
+
+  /* LAS TARJETAS (Cajas con sombra) */
+  .tarjeta-panel {
+    @apply bg-white/[0.02] p-5 lg:p-6 rounded-3xl border border-white/5 shadow-2xl;
+  }
+}
