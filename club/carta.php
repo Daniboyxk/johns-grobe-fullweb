@@ -8,7 +8,11 @@ $usuario_id = $_SESSION['usuario_id'];
 $es_admin = ($_SESSION['rol'] === 'admin'); 
 
 // Configuración del QR de la sesión
-$url_escaneo = "https://eaten-litmus-active.ngrok-free.dev/grobe-club/admin_canjear.php?id=" . $usuario_id;
+// URL dinámica del QR según el entorno (Localhost XAMPP, ngrok o dominio)
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || ($_SERVER['SERVER_PORT'] ?? 80) == 443) ? "https://" : "http://";
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$current_dir = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+$url_escaneo = $protocol . $host . $current_dir . "/admin_canjear.php?id=" . $usuario_id;
 $url_qr_api = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&data=" . urlencode($url_escaneo);
 
 // Chequeo de base de datos
