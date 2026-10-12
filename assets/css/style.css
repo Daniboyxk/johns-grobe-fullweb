@@ -7032,3 +7032,60 @@ button {
 }
 
 
+
+/* ==========================================================================
+   GROBE CLUB - ACCS AL PROGRAMA DE FIDELITZACI & CLIENTS
+   ========================================================================== */
+.capsule-nav-club {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0 !important;
+  margin-left: 0.25rem;
+}
+
+.club-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, rgba(210, 31, 60, 0.22) 0%, rgba(198, 166, 100, 0.25) 100%);
+  border: 1px solid rgba(210, 31, 60, 0.5);
+  color: #FFFFFF !important;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 16px rgba(210, 31, 60, 0.25);
+  position: relative;
+}
+
+.capsule-nav-club:hover .club-badge,
+.capsule-nav-club.active .club-badge {
+  background: linear-gradient(135deg, #D21F3C 0%, #A81930 100%);
+  border-color: #C6A664;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(210, 31, 60, 0.45), 0 0 10px rgba(198, 166, 100, 0.3);
+}
+
+.club-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #C6A664;
+  box-shadow: 0 0 8px #C6A664;
+  display: inline-block;
+  animation: pulseClubDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseClubDot {
+  0%, 100% { opacity: 0.7; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.3); box-shadow: 0 0 12px #FFD700; }
+}
+
+.capsule-mobile-club {
+  background: linear-gradient(90deg, rgba(210, 31, 60, 0.12) 0%, transparent 100%) !important;
+  border-left: 3px solid #D21F3C !important;
+}
